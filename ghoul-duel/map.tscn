@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d22ua768eocej"]
+[gd_scene load_steps=3 format=3 uid="uid://d22ua768eocej"]
 
-[ext_resource type="Texture2D" uid="uid://dy28lpreafc5r" path="res://assets/maps/Museum.png" id="1_nx7wj"]
+[ext_resource type="Texture2D" uid="uid://herroa7t3mqh" path="res://assets/maps/corn-maze.png" id="1_witte"]
+[ext_resource type="PackedScene" uid="uid://dxyjcx3jb1yur" path="res://static_body_2d.tscn" id="2_51l00"]
 
 [node name="map" type="Node"]
 
@@ -9,6 +10,9 @@ offset_right = 1062.0
 offset_bottom = 1062.0
 color = Color(0, 0, 0, 1)
 
-[node name="Museum" type="Sprite2D" parent="."]
-position = Vector2(531, 532)
-texture = ExtResource("1_nx7wj")
+[node name="Corn-maze" type="Sprite2D" parent="."]
+position = Vector2(530, 530)
+texture = ExtResource("1_witte")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("2_51l00")]
+position = Vector2(529, 537)
