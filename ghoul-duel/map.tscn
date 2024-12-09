@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://d22ua768eocej"]
+
+[ext_resource type="Texture2D" uid="uid://dy28lpreafc5r" path="res://assets/maps/Museum.png" id="1_nx7wj"]
+
+[node name="map" type="Node"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1062.0
+offset_bottom = 1062.0
+color = Color(0, 0, 0, 1)
+
+[node name="Museum" type="Sprite2D" parent="."]
+position = Vector2(531, 532)
+texture = ExtResource("1_nx7wj")

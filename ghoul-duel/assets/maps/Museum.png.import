@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://11vlxjwbyicc"
-valid=false
+uid="uid://dy28lpreafc5r"
+path="res://.godot/imported/Museum.png-b50caa43237bbe2e9a334b227c17081f.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/maps/museum level.png"
+source_file="res://assets/maps/Museum.png"
+dest_files=["res://.godot/imported/Museum.png-b50caa43237bbe2e9a334b227c17081f.ctex"]
 
 [params]
 
