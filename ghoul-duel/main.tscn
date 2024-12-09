@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7bu16y7qneu5"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_pherw"]
-
-[node name="Player" type="Area2D"]
-metadata/_edit_group_ = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_pherw")
