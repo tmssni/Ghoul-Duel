@@ -47,7 +47,7 @@ radius = 31.0
 height = 64.0
 
 [node name="Player" type="Area2D"]
-position = Vector2(56, 72)
+position = Vector2(543, 302)
 script = ExtResource("1_8kqqp")
 metadata/_edit_group_ = true
 
