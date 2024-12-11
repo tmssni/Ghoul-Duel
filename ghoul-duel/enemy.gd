@@ -20,6 +20,7 @@ func _process(delta):
 		velocity.y += 1 
 	
 	velocity = velocity.normalized() * speed
+	#velocity = move_and_slide()
 	$AnimatedSprite2D.play()
 	
 	position += velocity * delta
