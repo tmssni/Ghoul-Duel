@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8ivvlq2l441t"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_p6a4f"]
+[ext_resource type="Texture2D" uid="uid://dsro4vjttnvpm" path="res://assets/purple team/purple idle.png" id="2_a1y5x"]
+[ext_resource type="Texture2D" uid="uid://uosnw50dvyyo" path="res://assets/purple team/purple power.png" id="3_o7cd2"]
+[ext_resource type="Texture2D" uid="uid://fyi4ch4lefxj" path="res://assets/purple team/moving purple.png" id="4_akpgn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wgvom"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_a1y5x")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_a1y5x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_akpgn")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_o7cd2")
+}],
+"loop": true,
+"name": &"power",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xc25e"]
+radius = 54.0
+height = 148.0
+
+[node name="enemy" type="CharacterBody2D"]
+position = Vector2(378, 342)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_p6a4f")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wgvom")
+animation = &"move"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -2)
+shape = SubResource("CapsuleShape2D_xc25e")

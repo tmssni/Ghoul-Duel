@@ -1,12 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7bu16y7qneu5"]
+[gd_scene load_steps=7 format=3 uid="uid://byxcdoun7v1rx"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_8kqqp"]
 [ext_resource type="Texture2D" uid="uid://dxvn7lft28ugk" path="res://assets/green team/idle down.png" id="2_kuu8g"]
 [ext_resource type="Texture2D" uid="uid://cpwmttn00lxsw" path="res://assets/green team/idle up.png" id="3_8jmqo"]
 [ext_resource type="Texture2D" uid="uid://dpypwrr2oho54" path="res://assets/green team/moving green.png" id="4_cuoxl"]
-[ext_resource type="Texture2D" uid="uid://b1hd6ytnuwcer" path="res://assets/green team/power green.png" id="5_mqvc5"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_pherw"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_0wf4n"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -29,35 +28,22 @@ animations = [{
 "loop": true,
 "name": &"move",
 "speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_kuu8g")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_mqvc5")
-}],
-"loop": true,
-"name": &"power",
-"speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ogrn"]
-radius = 31.0
-height = 64.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jk6qr"]
+radius = 56.0
+height = 136.0
 
-[node name="Player" type="Area2D"]
-position = Vector2(56, 72)
+[node name="player" type="CharacterBody2D"]
+position = Vector2(489, 369)
 script = ExtResource("1_8kqqp")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_pherw")
+sprite_frames = SubResource("SpriteFrames_0wf4n")
 animation = &"idle"
+speed_scale = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, -1)
-shape = SubResource("CapsuleShape2D_8ogrn")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+position = Vector2(-8, 0)
+shape = SubResource("CapsuleShape2D_jk6qr")
