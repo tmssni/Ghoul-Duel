@@ -38,7 +38,7 @@ func _process(delta):
 		$AnimatedSprite2D.flip_h = velocity.x < 0
 	elif velocity.y != 0:
 		$AnimatedSprite2D.animation = "idle"
-		rotation = PI if velocity.y > 0 else 0
+		#rotation = PI if velocity.y > 0 else 0 : flips image vertically
 
 func start(pos):
 	position = pos
