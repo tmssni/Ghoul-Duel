@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dioflw88yot5f"]
+
+[ext_resource type="Script" path="res://persistent_nodes.gd" id="1_rs5lc"]
+
+[node name="Persistent_nodes" type="Node"]
+script = ExtResource("1_rs5lc")
