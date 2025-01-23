@@ -1,18 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://csh2obhqb1oaj"]
 
 [ext_resource type="Texture2D" uid="uid://herroa7t3mqh" path="res://assets/maps/corn-maze.png" id="1_witte"]
-[ext_resource type="PackedScene" path="res://static_body_2d.tscn" id="2_51l00"]
+[ext_resource type="PackedScene" uid="uid://dxyjcx3jb1yur" path="res://static_body_2d.tscn" id="2_51l00"]
 
 [node name="map" type="Node"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 offset_right = 1062.0
 offset_bottom = 1062.0
 color = Color(0, 0, 0, 1)
 
 [node name="Corn-maze" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(530, 530)
 texture = ExtResource("1_witte")
 
@@ -23,7 +21,7 @@ position = Vector2(529, 537)
 [node name="Spawning_nodes" type="Node" parent="."]
 
 [node name="1" type="Marker2D" parent="Spawning_nodes"]
-position = Vector2(214, 447)
+position = Vector2(356, 87)
 
 [node name="2" type="Marker2D" parent="Spawning_nodes"]
-position = Vector2(655, 446)
+position = Vector2(348, 986)
