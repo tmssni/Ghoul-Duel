@@ -47,3 +47,5 @@ speed_scale = 0.5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-8, 0)
 shape = SubResource("CapsuleShape2D_jk6qr")
+
+[node name="Camera2D" type="Camera2D" parent="."]
