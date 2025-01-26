@@ -1,26 +1,19 @@
 [gd_scene load_steps=3 format=3 uid="uid://csh2obhqb1oaj"]
 
+[ext_resource type="Texture2D" uid="uid://herroa7t3mqh" path="res://assets/maps/corn-maze.png" id="1_witte"]
 [ext_resource type="PackedScene" uid="uid://dxyjcx3jb1yur" path="res://static_body_2d.tscn" id="2_51l00"]
-[ext_resource type="Texture2D" uid="uid://3tljf7bwabow" path="res://assets/maps/pixelcut-export.png" id="2_nev7d"]
 
 [node name="map" type="Node"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_stretch_ratio = 0.0
+offset_right = 1062.0
+offset_bottom = 1062.0
 color = Color(0, 0, 0, 1)
-metadata/_edit_lock_ = true
 
-[node name="Game Layout" type="Sprite2D" parent="."]
-position = Vector2(747.5, 755)
-scale = Vector2(0.729896, 0.737983)
-texture = ExtResource("2_nev7d")
+[node name="Corn-maze" type="Sprite2D" parent="."]
+position = Vector2(530, 530)
+texture = ExtResource("1_witte")
 
-<<<<<<< Updated upstream
 [node name="StaticBody2D" parent="." instance=ExtResource("2_51l00")]
 visible = false
 position = Vector2(529, 537)
@@ -32,9 +25,3 @@ position = Vector2(356, 87)
 
 [node name="2" type="Marker2D" parent="Spawning_nodes"]
 position = Vector2(348, 986)
-=======
-[node name="Collisions" parent="." instance=ExtResource("2_51l00")]
-position = Vector2(753, 755)
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
->>>>>>> Stashed changes
