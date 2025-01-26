@@ -18,10 +18,12 @@ position = Vector2(356, 87)
 [node name="2" type="Marker2D" parent="Spawning_nodes"]
 position = Vector2(348, 986)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 position = Vector2(531, 531.5)
 scale = Vector2(0.501419, 0.500472)
 texture = ExtResource("2_c2c7r")
 
 [node name="StaticBody2D" parent="." instance=ExtResource("2_51l00")]
 position = Vector2(-2, 0)
+
+[node name="Coins" type="Area2D" parent="."]
