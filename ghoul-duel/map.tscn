@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://csh2obhqb1oaj"]
 
-[ext_resource type="PackedScene" uid="uid://dxyjcx3jb1yur" path="res://static_body_2d.tscn" id="2_51l00"]
+[ext_resource type="PackedScene" uid="uid://dh2c6o45ypcvy" path="res://static_body_2d.tscn" id="2_51l00"]
 [ext_resource type="Texture2D" uid="uid://ycfjqh1vx6da" path="res://assets/maps/pixelcut-export.png" id="2_c2c7r"]
 
 [node name="map" type="Node"]
@@ -9,10 +9,6 @@
 offset_right = 1062.0
 offset_bottom = 1062.0
 color = Color(0, 0, 0, 1)
-
-[node name="StaticBody2D" parent="." instance=ExtResource("2_51l00")]
-visible = false
-position = Vector2(529, 537)
 
 [node name="Spawning_nodes" type="Node" parent="."]
 
@@ -26,3 +22,6 @@ position = Vector2(348, 986)
 position = Vector2(531, 531.5)
 scale = Vector2(0.501419, 0.500472)
 texture = ExtResource("2_c2c7r")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("2_51l00")]
+position = Vector2(-2, 0)
