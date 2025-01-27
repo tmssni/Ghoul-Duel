@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://csh2obhqb1oaj"]
+[gd_scene load_steps=4 format=3 uid="uid://csh2obhqb1oaj"]
 
 [ext_resource type="PackedScene" uid="uid://dh2c6o45ypcvy" path="res://static_body_2d.tscn" id="2_51l00"]
 [ext_resource type="Texture2D" uid="uid://ycfjqh1vx6da" path="res://assets/maps/pixelcut-export.png" id="2_c2c7r"]
+[ext_resource type="PackedScene" uid="uid://xmrd1un3s7vg" path="res://coins.tscn" id="3_lqh61"]
 
 [node name="map" type="Node"]
 
@@ -14,6 +15,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="1" type="Marker2D" parent="Spawning_nodes"]
 position = Vector2(356, 87)
+gizmo_extents = 10.2
 
 [node name="2" type="Marker2D" parent="Spawning_nodes"]
 position = Vector2(348, 986)
@@ -23,7 +25,7 @@ position = Vector2(531, 531.5)
 scale = Vector2(0.501419, 0.500472)
 texture = ExtResource("2_c2c7r")
 
-[node name="StaticBody2D" parent="." instance=ExtResource("2_51l00")]
+[node name="static_body_2d" parent="." instance=ExtResource("2_51l00")]
 position = Vector2(-2, 0)
 
-[node name="Coins" type="Area2D" parent="."]
+[node name="Coins" parent="." instance=ExtResource("3_lqh61")]
