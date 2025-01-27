@@ -1,13 +1,14 @@
 extends Node
 
-#const DEFAULT_PORT = 28960
-#const MAX_CLIENTS = 6
 
-#var server = null
-#var client = null
+const DEFAULT_PORT = 28960
+const MAX_CLIENTS = 6
 
-#var ip_address = ""
-#var client_connected_to_server = false
+var server = null
+var client = null
+
+var ip_address = ""
+var client_connected_to_server = false
 
 onready var client_connection_timeout_timer = Timer.new()
 
@@ -20,6 +21,7 @@ func _ready() -> void:
 	# set IP for hosting by OS type
 	if OS.get_name() == "Windows":
 		ip_address = IP.get_local_addresses()[3]
+		print(ip_address)
 	elif OS.get_name() == "Android":
 		ip_address = IP.get_local_addresses()[0]
 	else:
@@ -37,32 +39,12 @@ func create_server() -> void:
 	server = NetworkedMultiplayerENet.new()
 	server.create_server(DEFAULT_PORT, MAX_CLIENTS)
 	get_tree().set_network_peer(server)
-	
 
 func join_server() -> void:
 	client = NetworkedMultiplayerENet.new()
 	client.create_client(ip_address, DEFAULT_PORT)
 	get_tree().set_network_peer(client)
 	client_connection_timeout_timer.start()
-
-
-
-func _connected_to_server() -> void:
-	print("Successfully connected to the server")
-	client_connected_to_server = true
-
-func _server_disconnected() -> void:
-	# Server kicked us; show error and abort.
-	print("Disconnected from the server")
-
-func _client_connection_timeout():
-	if client_connected_to_server == false:
-		print("Client has been timed out")
-		reset_network_connection()
-
-func _connection_failed():
-	# Could not even connect to server; abort.
-	reset_network_connection()
 
 func reset_network_connection() -> void:
 	if get_tree().has_network_peer():

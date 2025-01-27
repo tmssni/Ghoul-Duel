@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8ivvlq2l441t"]
+[gd_scene load_steps=9 format=3 uid="uid://b8ivvlq2l441t"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_p6a4f"]
 [ext_resource type="Texture2D" uid="uid://dsro4vjttnvpm" path="res://assets/purple team/purple idle.png" id="2_a1y5x"]
 [ext_resource type="Texture2D" uid="uid://uosnw50dvyyo" path="res://assets/purple team/purple power.png" id="3_o7cd2"]
 [ext_resource type="Texture2D" uid="uid://fyi4ch4lefxj" path="res://assets/purple team/moving purple.png" id="4_akpgn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5pnfr"]
+radius = 1.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wgvom"]
 animations = [{
@@ -39,11 +42,22 @@ animations = [{
 radius = 54.0
 height = 148.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_mjb1v"]
+radius = 2.0
+
 [node name="enemy" type="CharacterBody2D"]
 position = Vector2(378, 342)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_p6a4f")
-metadata/_edit_group_ = true
+speed = null
+flames_stolen = null
+
+[node name="StealDistance" type="Area2D" parent="."]
+position = Vector2(-756, -684)
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StealDistance"]
+shape = SubResource("CircleShape2D_5pnfr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wgvom")
@@ -53,3 +67,14 @@ speed_scale = 0.5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, -2)
 shape = SubResource("CapsuleShape2D_xc25e")
+
+[node name="Network_tick_rate" type="Timer" parent="."]
+
+[node name="Attack_delay" type="Timer" parent="."]
+
+[node name="PlayerDetect" type="Area2D" parent="."]
+position = Vector2(-756, -684)
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetect"]
+shape = SubResource("CircleShape2D_mjb1v")
