@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://map.gd" id="1_5mviy"]
 [ext_resource type="PackedScene" uid="uid://dh2c6o45ypcvy" path="res://static_body_2d.tscn" id="2_51l00"]
 [ext_resource type="Texture2D" uid="uid://ycfjqh1vx6da" path="res://assets/maps/pixelcut-export.png" id="2_c2c7r"]
-[ext_resource type="PackedScene" path="res://coins.tscn" id="3_lqh61"]
+[ext_resource type="PackedScene" uid="uid://xmrd1un3s7vg" path="res://coins.tscn" id="3_lqh61"]
 
 [node name="map" type="Node"]
 script = ExtResource("1_5mviy")
