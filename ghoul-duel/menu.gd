@@ -33,6 +33,7 @@ func connection_failed():
 
 @rpc("any_peer")
 func SendPlayerInformation(name, id):
+	print(name + str(id))
 	if !Manager.Players.has(id):
 		Manager.Players[id] ={
 			"name" : name,
@@ -57,15 +58,15 @@ func hostGame():
 		print("Cannot host: " + str(error))
 		return
 	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
-	
 	multiplayer.set_multiplayer_peer(peer)
+	
 	print("Waiting for players")
 	SendPlayerInformation($LineEdit.text, multiplayer.get_unique_id())
 
 func _on_host_pressed() -> void:
 	hostGame()
 	SendPlayerInformation($LineEdit.text, multiplayer.get_unique_id())
-	$ServerBrowser.setUpBroadcast($LineEdit.text, "'s server")
+	$ServerBrowser.setUpBroadcast($LineEdit.text + "'s server")
 
 func _on_join_pressed():
 	joinbyIp(Address)

@@ -1,3 +1,7 @@
 extends Node
 
-var Players = {} 
+var Players = {
+	"name" : "name",
+	"id" : 1,
+	"flames" : 0
+} 

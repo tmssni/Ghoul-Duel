@@ -1,17 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddxqek73wegpn"]
+[gd_scene load_steps=5 format=3 uid="uid://ddxqek73wegpn"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_sxax3"]
 [ext_resource type="Script" path="res://server_browser.gd" id="2_jfm3h"]
-[ext_resource type="PackedScene" uid="uid://di2q2qjbrwc6y" path="res://server_info.tscn" id="3_mprob"]
+[ext_resource type="Script" path="res://server_info.gd" id="4_t8hjf"]
+
+[sub_resource type="Resource" id="Resource_2qwn4"]
+metadata/__load_path__ = "res://server_info.tscn"
 
 [node name="menu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 649.0
-offset_right = 649.0
-offset_bottom = 98.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 114.0
+offset_top = 87.0
+offset_right = 114.0
+offset_bottom = 185.0
 script = ExtResource("1_sxax3")
 
 [node name="host" type="Button" parent="."]
@@ -48,6 +50,7 @@ offset_top = 375.0
 offset_right = 593.0
 offset_bottom = 406.0
 pivot_offset = Vector2(373, 213)
+placeholder_text = "Host name here"
 
 [node name="Name" type="Label" parent="."]
 layout_mode = 0
@@ -63,7 +66,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_jfm3h")
-serverInfo = ExtResource("3_mprob")
+serverInfo = SubResource("Resource_2qwn4")
 
 [node name="BroadcastTimer" type="Timer" parent="ServerBrowser"]
 
@@ -83,6 +86,28 @@ offset_top = 536.0
 offset_right = 713.0
 offset_bottom = 810.0
 
+[node name="ServerInfo2" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -13.0
+offset_right = 647.0
+offset_bottom = 85.0
+
+[node name="Name" type="Label" parent="Panel/ServerInfo2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Name"
+
+[node name="Ip" type="Label" parent="Panel/ServerInfo2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Ip"
+
+[node name="PlayerCount" type="Label" parent="Panel/ServerInfo2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Player count"
+
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 0
 offset_left = 1.0
@@ -92,6 +117,7 @@ offset_bottom = 271.0
 
 [node name="ServerInfo" type="HBoxContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
+script = ExtResource("4_t8hjf")
 
 [node name="Name" type="Label" parent="Panel/VBoxContainer/ServerInfo"]
 layout_mode = 2
@@ -112,14 +138,8 @@ text = "5"
 layout_mode = 2
 text = "Join"
 
-[node name="ServerInfo" parent="." instance=ExtResource("3_mprob")]
-layout_mode = 0
-offset_left = 19.0
-offset_top = 90.0
-offset_right = 668.0
-offset_bottom = 188.0
-
 [connection signal="pressed" from="host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="join" to="." method="_on_join_pressed"]
 [connection signal="pressed" from="start" to="." method="_on_start_pressed"]
 [connection signal="timeout" from="ServerBrowser/BroadcastTimer" to="ServerBrowser" method="_on_broadcast_timer_timeout"]
+[connection signal="pressed" from="Panel/VBoxContainer/ServerInfo/Button" to="Panel/VBoxContainer/ServerInfo" method="_on_button_pressed"]

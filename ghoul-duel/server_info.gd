@@ -8,10 +8,8 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(delta):
 	pass
 
-
-func _on_button_pressed() -> void:
-	joinGame.omit($Ip.text)
-	pass # Replace with function body.
+func _on_button_pressed():
+	joinGame.emit($Ip.text)

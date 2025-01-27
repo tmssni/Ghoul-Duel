@@ -1,3 +1,4 @@
+#ServerBrowser
 extends Control
 
 signal found_server
@@ -6,8 +7,8 @@ signal joinGame(ip)
 
 var broadcastTimer : Timer
 var RoomInfo = {
-	"name":"name", 
-	"playerCount":0
+	"name" : "name", 
+	"playerCount" : 0
 }
 var broadcaster : PacketPeerUDP
 var listener : PacketPeerUDP
@@ -23,6 +24,7 @@ func _ready():
 	
 func setUp():
 	listener = PacketPeerUDP.new()
+	listener.set_broadcast_enabled(true)
 	var ok = listener.bind(listenPort)
 	if ok == OK:
 		print("Bound to listen Port " + str(listenPort) + " sucessful")
@@ -54,13 +56,17 @@ func _process(delta):
 		var data = bytes.get_string_from_ascii()
 		var roomInfo = JSON.parse_string(data)
 		
-		print("server ip: " + serverip + "server port: " + str(serverport) + "room info: " + roomInfo)
-	
-		for i in $Panel/VBoxContainer.get_children():
-			if i.name == RoomInfo.name:
-				i.get_node("Ip").text = serverip
-				i.get_node("PlayerCount").text = str(RoomInfo.playerCount)
-				return
+		print("server ip: " + str(serverip) + "server port: " + str(serverport) + "room info: " + str(roomInfo))
+		
+		var child = $Panel/VBoxContainer.find_child(RoomInfo.name)
+		if child != null:
+			child.get_node("PlayerCount").text = str(data.playerCount)
+		
+		#for i in child:
+			#if i.name == RoomInfo.name:
+				#i.get_node("Ip").text = serverip
+				#i.get_node("PlayerCount").text = str(RoomInfo.playerCount)
+				#return
 
 		var currentInfo = serverInfo.instantiate()
 		currentInfo.name = RoomInfo.name
