@@ -1,13 +1,13 @@
 extends Node
 
-const DEFAULT_PORT = 28960
-const MAX_CLIENTS = 6
+#const DEFAULT_PORT = 28960
+#const MAX_CLIENTS = 6
 
-var server = null
-var client = null
+#var server = null
+#var client = null
 
-var ip_address = ""
-var client_connected_to_server = false
+#var ip_address = ""
+#var client_connected_to_server = false
 
 onready var client_connection_timeout_timer = Timer.new()
 
