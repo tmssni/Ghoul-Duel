@@ -1,0 +1,125 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddxqek73wegpn"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_sxax3"]
+[ext_resource type="Script" path="res://server_browser.gd" id="2_jfm3h"]
+[ext_resource type="PackedScene" uid="uid://di2q2qjbrwc6y" path="res://server_info.tscn" id="3_mprob"]
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 649.0
+offset_right = 649.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sxax3")
+
+[node name="host" type="Button" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 455.0
+offset_right = 265.0
+offset_bottom = 497.0
+text = "Host
+"
+
+[node name="join" type="Button" parent="."]
+layout_mode = 0
+offset_left = 293.0
+offset_top = 455.0
+offset_right = 430.0
+offset_bottom = 497.0
+text = "Join
+"
+
+[node name="start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 459.0
+offset_top = 455.0
+offset_right = 596.0
+offset_bottom = 497.0
+text = "Start
+"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 213.0
+offset_top = 375.0
+offset_right = 593.0
+offset_bottom = 406.0
+pivot_offset = Vector2(373, 213)
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 377.0
+offset_right = 223.0
+offset_bottom = 419.0
+text = "Name
+"
+
+[node name="ServerBrowser" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_jfm3h")
+serverInfo = ExtResource("3_mprob")
+
+[node name="BroadcastTimer" type="Timer" parent="ServerBrowser"]
+
+[node name="Label2" type="Label" parent="ServerBrowser"]
+layout_mode = 0
+offset_left = 371.0
+offset_top = 23.0
+offset_right = 476.0
+offset_bottom = 72.0
+text = "Bound to
+Listener port:"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 536.0
+offset_right = 713.0
+offset_bottom = 810.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 55.0
+offset_right = 650.0
+offset_bottom = 271.0
+
+[node name="ServerInfo" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="Panel/VBoxContainer/ServerInfo"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Test label"
+
+[node name="Ip" type="Label" parent="Panel/VBoxContainer/ServerInfo"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "192.168.1.255"
+
+[node name="PlayerCount" type="Label" parent="Panel/VBoxContainer/ServerInfo"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "5"
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer/ServerInfo"]
+layout_mode = 2
+text = "Join"
+
+[node name="ServerInfo" parent="." instance=ExtResource("3_mprob")]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 90.0
+offset_right = 668.0
+offset_bottom = 188.0
+
+[connection signal="pressed" from="host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="timeout" from="ServerBrowser/BroadcastTimer" to="ServerBrowser" method="_on_broadcast_timer_timeout"]

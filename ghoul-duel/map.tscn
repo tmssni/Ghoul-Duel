@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://csh2obhqb1oaj"]
+[gd_scene load_steps=6 format=3 uid="uid://csh2obhqb1oaj"]
 
 [ext_resource type="Script" path="res://map.gd" id="1_5mviy"]
 [ext_resource type="PackedScene" uid="uid://dh2c6o45ypcvy" path="res://static_body_2d.tscn" id="2_51l00"]
 [ext_resource type="Texture2D" uid="uid://ycfjqh1vx6da" path="res://assets/maps/pixelcut-export.png" id="2_c2c7r"]
+[ext_resource type="PackedScene" uid="uid://byxcdoun7v1rx" path="res://player.tscn" id="2_jv3ys"]
 [ext_resource type="PackedScene" path="res://coins.tscn" id="3_lqh61"]
 
 [node name="map" type="Node"]
 script = ExtResource("1_5mviy")
+PlayerScene = ExtResource("2_jv3ys")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1062.0
@@ -15,11 +17,10 @@ color = Color(0, 0, 0, 1)
 
 [node name="Spawning_nodes" type="Node" parent="."]
 
-[node name="1" type="Marker2D" parent="Spawning_nodes"]
+[node name="1" type="Node2D" parent="Spawning_nodes" groups=["PlayerSpawnPoint"]]
 position = Vector2(356, 87)
-gizmo_extents = 10.2
 
-[node name="2" type="Marker2D" parent="Spawning_nodes"]
+[node name="2" type="Node2D" parent="Spawning_nodes" groups=["PlayerSpawnPoint"]]
 position = Vector2(348, 986)
 
 [node name="Background" type="Sprite2D" parent="."]

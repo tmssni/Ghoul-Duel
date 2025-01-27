@@ -12,7 +12,7 @@ func _on_body_entered(body: Node2D) -> void:
 		#GameController.coin_collected(value)
 		timer.start()
 		self.visible = false
-		area.set_deferred("monitoring", false)
+		#area.set_deferred("monitoring", false)
 
 func _on_timeout() -> void:
 	area.set_deferred("monitoring", true)

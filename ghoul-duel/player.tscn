@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://byxcdoun7v1rx"]
+[gd_scene load_steps=8 format=3 uid="uid://byxcdoun7v1rx"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_8kqqp"]
 [ext_resource type="Texture2D" uid="uid://dxvn7lft28ugk" path="res://assets/green team/idle down.png" id="2_kuu8g"]
@@ -31,28 +31,35 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jk6qr"]
-radius = 56.0
-height = 136.0
+radius = 16.0
+height = 38.0
 
-[node name="player" type="CharacterBody2D"]
-position = Vector2(489, 369)
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_r0o5h"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = false
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:syncPos")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="player" type="CharacterBody2D" groups=["Player"]]
+position = Vector2(589, 579)
 script = ExtResource("1_8kqqp")
-speed = null
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-52.25, -53)
+scale = Vector2(0.269231, 0.273973)
 sprite_frames = SubResource("SpriteFrames_0wf4n")
 animation = &"idle"
 speed_scale = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-8, 0)
+position = Vector2(-55, -54)
 shape = SubResource("CapsuleShape2D_jk6qr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-54, -52)
 
-[node name="Network_tick_rate" type="Timer" parent="."]
-wait_time = 0.3
-autostart = true
-
-[connection signal="timeout" from="Network_tick_rate" to="." method="_on_network_tick_rate_timeout"]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_r0o5h")

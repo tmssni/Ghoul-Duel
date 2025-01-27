@@ -1,24 +1,21 @@
+#SceneManager
 extends Node
 
-var current_spawn_location_instance_number = 1
-var current_player_for_spawn_location_number = null
+@export var PlayerScene : PackedScene
 
+# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# warning-ignore:RETURN_VALUE_DISCARDED
-	get_tree().connect("network_peer_disconnected", self, "_player_disconnected")
-	
-	if get_tree().is_network_server():
-		setup_players_positions()
+	var index = 0
+	for i in Manager.Players:
+		var currentPlayer = PlayerScene.instantiate()
+		currentPlayer.name = str(Manager.Players[i].id)
+		add_child(currentPlayer)
+		for spawn in get_tree().get_nodes_in_group("PlayerSpawnPoint"):
+			if spawn.name == str(index):
+				currentPlayer.global_position = spawn.global_position
+		index += 1
 
-func setup_players_positions() -> void:
-	for player in persistent_nodes.get_children():
-		for spawn_location in $Spawning_nodes.get_children():
-			if int(spawn_location.name) == current_spawn_location_instance_number and current_player_for_spawn_location_number != player:
-				player.rpc("update_position", spawn_location.global_position)
-				current_spawn_location_instance_number += 1
-				current_player_for_spawn_location_number = player
 
-func _player_disconnected(id) -> void:
-	print("Player " + str(id) + " has disconnected")
-	if persistent_nodes.has_node(str(id)):
-		persistent_nodes.get_node(str(id)).queue_free()
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
