@@ -78,3 +78,6 @@ scale = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetect"]
 shape = SubResource("CircleShape2D_mjb1v")
+
+[connection signal="timeout" from="Network_tick_rate" to="." method="_on_network_tick_rate_timeout"]
+[connection signal="body_entered" from="PlayerDetect" to="." method="_on_player_detect_body_entered"]

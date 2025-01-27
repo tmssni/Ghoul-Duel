@@ -34,7 +34,7 @@ animations = [{
 radius = 56.0
 height = 136.0
 
-[node name="player" type="CharacterBody2D" groups=["Player"]]
+[node name="player" type="CharacterBody2D"]
 position = Vector2(489, 369)
 script = ExtResource("1_8kqqp")
 speed = null
@@ -50,3 +50,9 @@ position = Vector2(-8, 0)
 shape = SubResource("CapsuleShape2D_jk6qr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Network_tick_rate" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
+[connection signal="timeout" from="Network_tick_rate" to="." method="_on_network_tick_rate_timeout"]

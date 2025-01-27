@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://csh2obhqb1oaj"]
+[gd_scene load_steps=5 format=3 uid="uid://csh2obhqb1oaj"]
 
+[ext_resource type="Script" path="res://map.gd" id="1_5mviy"]
 [ext_resource type="PackedScene" uid="uid://dh2c6o45ypcvy" path="res://static_body_2d.tscn" id="2_51l00"]
 [ext_resource type="Texture2D" uid="uid://ycfjqh1vx6da" path="res://assets/maps/pixelcut-export.png" id="2_c2c7r"]
 [ext_resource type="PackedScene" path="res://coins.tscn" id="3_lqh61"]
 
 [node name="map" type="Node"]
+script = ExtResource("1_5mviy")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1062.0

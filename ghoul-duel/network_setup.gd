@@ -1,6 +1,6 @@
 extends Control
 
-@onready var IpAddr = $IpAddr
+@onready var IpAddr = $Control/IpAddr
 var player = load("res://Player.tscn")
 var current_spawn_location_instance_number = 1
 var current_player_for_spawn_location_number = null
@@ -26,19 +26,19 @@ func _connected_to_server(id) -> void:
 	await get_tree().create_timer(0.1)
 	instance_player(get_tree().get_network_unique_id())
 
-func _on_createServer_pressed() -> void:
+func _on_createServer_pressed():
 	Network.create_server()
 	$Control.hide()
 	instance_player(get_tree().get_network_unique_id())
 
 
-func _on_joinServer_pressed() -> void:
+func _on_joinServer_pressed():
 	Network.ip_address = IpAddr.text
 	$Control.hide()
 	$Control/CreateServer.hide()
 	Network.join_server()
 
-func _on_start_game_pressed() -> void:
+func _on_startGame_pressed() -> void:
 	self.rpc("switch_to_game")
 
 func switch_to_game() -> void:

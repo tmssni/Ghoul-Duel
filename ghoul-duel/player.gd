@@ -63,7 +63,7 @@ func update_position(pos):
 	global_position = pos
 	puppet_position = pos
 
-func _on_Network_tick_rate_timeout():
+func _on_network_tick_rate_timeout():
 	if get_tree().has_network_peer():
 		if is_network_master():
 			self.rset_unreliable("puppet_position", global_position)

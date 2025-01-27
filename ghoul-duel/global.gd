@@ -10,12 +10,3 @@ func instance_node(node: Object, parent: Object) -> Object:
 	parent.add_child(node_instance)
 	return node_instance
 	
-func _ready() -> void:
-	if get_tree().is_network_server():
-		setup_players_positions()
-		randomize()
-		var seedToUse = randi()
-		self.rpc("applySeed", seedToUse)
-func applySeed(seedToUse):
-		seed(seedToUse)
-		

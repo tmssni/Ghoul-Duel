@@ -33,3 +33,4 @@ offset_bottom = 8.0
 
 [connection signal="pressed" from="createServer" to="." method="_on_createServer_pressed"]
 [connection signal="pressed" from="joinServer" to="." method="_on_joinServer_pressed"]
+[connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
