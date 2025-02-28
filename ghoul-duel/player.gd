@@ -15,8 +15,8 @@ var screen_size
 
 func _ready():
 	# Set the camera as current if we are this player.
-	if player == multiplayer.get_unique_id():
-		$Camera2D.current = true
+	#if player == multiplayer.get_unique_id():
+		#$Camera2D.current = true
 	screen_size = get_viewport_rect().size
 	#$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 
@@ -40,7 +40,7 @@ func _physics_process(delta):
 
 		# Apply velocity using move_and_slide()
 		velocity = input_velocity
-		#move_and_slide()
+		move_and_slide()
 	
 		
 		# Handle animation
@@ -50,7 +50,6 @@ func _physics_process(delta):
 			$AnimatedSprite2D.flip_h = velocity.x < 0
 		elif velocity.y != 0:
 			$AnimatedSprite2D.animation = "move"
-			$AnimatedSprite2D.flip_v = velocity.y > 0
 	
 func start(pos):
 	position = pos

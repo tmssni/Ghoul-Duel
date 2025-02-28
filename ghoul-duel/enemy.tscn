@@ -45,6 +45,7 @@ scale = Vector2(0.5, 0.5)
 script = ExtResource("1_p6a4f")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.28, 0.28)
 sprite_frames = SubResource("SpriteFrames_wgvom")
 animation = &"move"
 speed_scale = 0.5

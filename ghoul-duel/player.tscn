@@ -40,19 +40,18 @@ height = 38.0
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_pdagp"]
 
 [node name="player" type="CharacterBody2D" groups=["Player"]]
-position = Vector2(584, 582)
+position = Vector2(1114, 1112)
 script = ExtResource("1_8kqqp")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-52.25, -53)
+position = Vector2(-695, -115)
 scale = Vector2(0.269231, 0.273973)
 sprite_frames = SubResource("SpriteFrames_0wf4n")
 animation = &"idle"
 speed_scale = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-55, -54)
+position = Vector2(-697, -116)
 shape = SubResource("CapsuleShape2D_jk6qr")
 
 [node name="ServerSynchronizer" type="MultiplayerSynchronizer" parent="."]

@@ -15,10 +15,6 @@ run/main_scene="res://map.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
-[autoload]
-
-Manager="*res://GameManager.gd"
-
 [display]
 
 window/size/viewport_width=1060

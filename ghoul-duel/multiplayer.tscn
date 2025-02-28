@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dr1n33108k7i4"]
+[gd_scene load_steps=6 format=3 uid="uid://dr1n33108k7i4"]
 
 [ext_resource type="Script" path="res://multiplayer.gd" id="1_kogxo"]
 [ext_resource type="PackedScene" uid="uid://csh2obhqb1oaj" path="res://map.tscn" id="2_j8t54"]
+[ext_resource type="PackedScene" uid="uid://xmrd1un3s7vg" path="res://coins.tscn" id="3_oq0f8"]
+[ext_resource type="PackedScene" uid="uid://byxcdoun7v1rx" path="res://player.tscn" id="4_xjmig"]
+[ext_resource type="PackedScene" uid="uid://b8ivvlq2l441t" path="res://enemy.tscn" id="5_xbv17"]
 
 [node name="Multiplayer" type="Node"]
 script = ExtResource("1_kogxo")
@@ -39,8 +42,21 @@ expand_to_text_length = true
 
 [node name="map" parent="." instance=ExtResource("2_j8t54")]
 
-[node name="Camera2D" type="Camera2D" parent="map"]
-position = Vector2(531, 533)
+[node name="Coins" parent="." instance=ExtResource("3_oq0f8")]
+
+[node name="player" parent="." instance=ExtResource("4_xjmig")]
+position = Vector2(1113, 1110)
+
+[node name="Camera2D2" type="Camera2D" parent="player"]
+position = Vector2(-748, -204)
+zoom = Vector2(3.08, 3.08)
+
+[node name="enemy" parent="." instance=ExtResource("5_xbv17")]
+position = Vector2(363, 83)
+
+[node name="Camera2D" type="Camera2D" parent="enemy"]
+position = Vector2(20, 184)
+zoom = Vector2(3.08, 3.08)
 
 [connection signal="pressed" from="UI/Net/Options/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="UI/Net/Options/Connect" to="." method="_on_connect_pressed"]
