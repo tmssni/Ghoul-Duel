@@ -15,8 +15,8 @@ var screen_size
 
 func _ready():
 	# Set the camera as current if we are this player.
-	if player == multiplayer.get_unique_id():
-		$Camera2D.current = true
+	#if player == multiplayer.get_unique_id():
+		#$Camera2D.current = true
 	screen_size = get_viewport_rect().size
 	#$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 

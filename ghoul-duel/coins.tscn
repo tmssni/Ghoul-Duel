@@ -763,6 +763,6 @@ position = Vector2(85, 87)
 polygon = PackedVector2Array(38, 356, 28, 371, 31, 381, 43, 381, 48, 373, 44, 364)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 5.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

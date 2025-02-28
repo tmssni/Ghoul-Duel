@@ -4,7 +4,7 @@ var direction := Vector2.ZERO
 var screen_size
 @export var speed = 400
 @export var flames_stolen := 1
-var target_player = null
+#var target_player = null
 #var enemy = enemy.instance()
 #countEnemy += 1
 #enemy.set_name("enemy_" + str(countEnemy))
@@ -16,14 +16,14 @@ func _ready():
 
 func _physics_process(delta):
 	direction = Vector2.ZERO
-	if is_instance_valid(target_player):
+	#if is_instance_valid(target_player):
 		# normalized, bc we dont want get float vector
-		direction = global_position.direction_to(target_player.global_position).normalized()
+	#direction = global_position.direction_to(target_player.global_position).normalized()
 	var _move = move_and_collide(direction * speed)
 
-func _on_player_detect_body_entered(player):
-	if player.is_in_group("Player"):
-		target_player = player
+#func _on_player_detect_body_entered(player):
+	#if player.is_in_group("Player"):
+		#target_player = player
 
 
 func _process(delta):

@@ -6,6 +6,7 @@ const SPAWN_RANDOM := 5.0
 const PORT = 4433
 
 func _ready():
+	#if no player in server
 	if not multiplayer.is_server():
 		return
 	multiplayer.peer_connected.connect(add_player)
@@ -21,10 +22,10 @@ func _exit_tree():
 
 
 func add_player(id: int):
-	var character = preload("res://player.tscn").instantiate()
-	# Set player id.
-	character.player = id
-	# Randomize character position.
+	var character = load("res://player.tscn").instantiate()
+	# Set player id. preload("res://player.tscn")
+	character.player = str(id)
+	# Randomize character position. (WILL REPLACE WITH SPAWN POINT EVENTUALLY)
 	var pos := Vector2.from_angle(randf() * 2 * PI)
 	character.position = Vector2(pos.x * SPAWN_RANDOM * randf(), pos.y * SPAWN_RANDOM * randf())
 	character.name = str(id)

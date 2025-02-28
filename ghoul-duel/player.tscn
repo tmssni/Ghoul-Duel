@@ -32,7 +32,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jk6qr"]
-radius = 16.0
+radius = 17.0
 height = 38.0
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_23hfv"]
@@ -40,26 +40,26 @@ height = 38.0
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_pdagp"]
 
 [node name="player" type="CharacterBody2D" groups=["Player"]]
-position = Vector2(584, 582)
+position = Vector2(605, 542)
 script = ExtResource("1_8kqqp")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-52.25, -53)
+position = Vector2(-216, -203)
 scale = Vector2(0.269231, 0.273973)
 sprite_frames = SubResource("SpriteFrames_0wf4n")
 animation = &"idle"
 speed_scale = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-55, -54)
+position = Vector2(-218, -205)
 shape = SubResource("CapsuleShape2D_jk6qr")
 
 [node name="ServerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_23hfv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-584, -582)
+position = Vector2(-216, -149)
+zoom = Vector2(3.055, 3.055)
 
 [node name="PlayerInput" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_pdagp")
