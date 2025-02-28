@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://byxcdoun7v1rx"]
+[gd_scene load_steps=10 format=3 uid="uid://byxcdoun7v1rx"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_8kqqp"]
 [ext_resource type="Texture2D" uid="uid://dxvn7lft28ugk" path="res://assets/green team/idle down.png" id="2_kuu8g"]
 [ext_resource type="Texture2D" uid="uid://cpwmttn00lxsw" path="res://assets/green team/idle up.png" id="3_8jmqo"]
 [ext_resource type="Texture2D" uid="uid://dpypwrr2oho54" path="res://assets/green team/moving green.png" id="4_cuoxl"]
+[ext_resource type="Script" path="res://player_input.gd" id="5_ruq8n"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0wf4n"]
 animations = [{
@@ -34,16 +35,12 @@ animations = [{
 radius = 16.0
 height = 38.0
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_r0o5h"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = false
-properties/0/replication_mode = 1
-properties/1/path = NodePath(".:syncPos")
-properties/1/spawn = true
-properties/1/replication_mode = 1
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_23hfv"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_pdagp"]
 
 [node name="player" type="CharacterBody2D" groups=["Player"]]
-position = Vector2(589, 579)
+position = Vector2(584, 582)
 script = ExtResource("1_8kqqp")
 metadata/_edit_group_ = true
 
@@ -58,8 +55,12 @@ speed_scale = 0.5
 position = Vector2(-55, -54)
 shape = SubResource("CapsuleShape2D_jk6qr")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-54, -52)
+[node name="ServerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_23hfv")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_r0o5h")
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-584, -582)
+
+[node name="PlayerInput" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_pdagp")
+script = ExtResource("5_ruq8n")

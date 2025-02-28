@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr1n33108k7i4"]
+
+[ext_resource type="Script" path="res://multiplayer.gd" id="1_kogxo"]
+[ext_resource type="PackedScene" uid="uid://csh2obhqb1oaj" path="res://map.tscn" id="2_j8t54"]
+
+[node name="Multiplayer" type="Node"]
+script = ExtResource("1_kogxo")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Net" type="HBoxContainer" parent="UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Options" type="VBoxContainer" parent="UI/Net"]
+layout_mode = 2
+
+[node name="Lable" type="Label" parent="UI/Net/Options"]
+layout_mode = 2
+text = "Direct:"
+
+[node name="Host" type="Button" parent="UI/Net/Options"]
+layout_mode = 2
+text = "Host"
+
+[node name="Connect" type="Button" parent="UI/Net/Options"]
+layout_mode = 2
+text = "Connect"
+
+[node name="Remote" type="LineEdit" parent="UI/Net/Options"]
+layout_mode = 2
+text = "127.0.0.1"
+expand_to_text_length = true
+
+[node name="map" parent="." instance=ExtResource("2_j8t54")]
+
+[node name="Camera2D" type="Camera2D" parent="map"]
+position = Vector2(531, 533)
+
+[connection signal="pressed" from="UI/Net/Options/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="UI/Net/Options/Connect" to="." method="_on_connect_pressed"]
