@@ -1,9 +1,12 @@
 #multiplayer.gd
 extends Node
 
+var peer
 const SPAWN_RANDOM := 5.0
-
 const PORT = 4433
+var ip = "127.0.0.1"
+
+
 
 func _ready():
 	if not multiplayer.is_server():
@@ -45,29 +48,37 @@ func del_player(id: int):
 		print("Automatically starting dedicated server.")
 		_on_host_pressed.call_deferred()
 
-func _on_host_pressed() -> void:
+func _on_host_pressed():
+	$UI/Net/Otions/Join.disabled = true
 	#start as server
-	var peer = ENetMultiplayerPeer.new()
-	peer.create_server(PORT)
-	if peer.get_connection_status() == MultiplayerPeer.CONNECTION_DISCONNECTED:
-		OS.alert("Failed to start multiplayer server.")
+	var peer = ENetMultiplayerPeer.new()	
+	var error = peer.create_server(PORT)
+	
+	if error != OK:
+		OS.alert("Failed to start multiplayer client.")
 		return
+	
 	multiplayer.multiplayer_peer = peer
+	#multiplayer.peer_connected.connect(peer_connected())
+	
 	start_game()
 
-func _on_connect_pressed() -> void:
+func _on_connect_pressed():
 	#start as client.
 	var txt : String = $UI/Net/Options/Remote.text
+	
 	if txt == "":
 		OS.alert("Need a remote to connect to.")
 		return
-	var peer = ENetMultiplayerPeer.new()
-	peer.create_client(txt, PORT)
-	if peer.get_connection_status() == MultiplayerPeer.CONNECTION_DISCONNECTED:
-		OS.alert("Failed to start multiplayer client.")
-		return
+	
+	peer = ENetMultiplayerPeer.new()
+	peer.create_client(ip, PORT)
+	
 	multiplayer.multiplayer_peer = peer
 	start_game()
+
+func peer_connected(id) : 
+	print("Peer connected : ", id)
 
 func start_game():
 	# Hide the UI and unpause to start the game.

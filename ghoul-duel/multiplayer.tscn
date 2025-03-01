@@ -12,8 +12,10 @@ script = ExtResource("1_kogxo")
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1.0
+offset_top = 4.0
+offset_right = 1060.0
+offset_bottom = 1063.0
 
 [node name="Net" type="HBoxContainer" parent="UI"]
 layout_mode = 0
@@ -44,11 +46,11 @@ expand_to_text_length = true
 
 [node name="Coins" parent="." instance=ExtResource("3_oq0f8")]
 
-[node name="player" parent="." instance=ExtResource("4_xjmig")]
-position = Vector2(1113, 1110)
-
 [node name="enemy" parent="." instance=ExtResource("5_xbv17")]
 position = Vector2(363, 83)
+
+[node name="player" parent="." instance=ExtResource("4_xjmig")]
+position = Vector2(1113, 1110)
 
 [connection signal="pressed" from="UI/Net/Options/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="UI/Net/Options/Connect" to="." method="_on_connect_pressed"]
