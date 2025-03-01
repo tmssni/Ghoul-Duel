@@ -47,16 +47,8 @@ expand_to_text_length = true
 [node name="player" parent="." instance=ExtResource("4_xjmig")]
 position = Vector2(1113, 1110)
 
-[node name="Camera2D2" type="Camera2D" parent="player"]
-position = Vector2(-748, -204)
-zoom = Vector2(3.08, 3.08)
-
 [node name="enemy" parent="." instance=ExtResource("5_xbv17")]
 position = Vector2(363, 83)
-
-[node name="Camera2D" type="Camera2D" parent="enemy"]
-position = Vector2(20, 184)
-zoom = Vector2(3.08, 3.08)
 
 [connection signal="pressed" from="UI/Net/Options/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="UI/Net/Options/Connect" to="." method="_on_connect_pressed"]
