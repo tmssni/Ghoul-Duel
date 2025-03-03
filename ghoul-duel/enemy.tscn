@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8ivvlq2l441t"]
+[gd_scene load_steps=8 format=3 uid="uid://b8ivvlq2l441t"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_p6a4f"]
 [ext_resource type="Texture2D" uid="uid://dsro4vjttnvpm" path="res://assets/purple team/purple idle.png" id="2_a1y5x"]
@@ -39,6 +39,8 @@ animations = [{
 radius = 28.0
 height = 72.0
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_najyk"]
+
 [node name="enemy" type="CharacterBody2D"]
 position = Vector2(378, 342)
 scale = Vector2(0.5, 0.5)
@@ -56,3 +58,6 @@ shape = SubResource("CapsuleShape2D_xc25e")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_najyk")

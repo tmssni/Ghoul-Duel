@@ -5,10 +5,11 @@ var peer
 const SPAWN_RANDOM := 5.0
 const PORT = 4433
 var ip = "127.0.0.1"
-
+@onready var cam = $cam
 
 
 func _ready():
+	cam.enabled = false
 	if not multiplayer.is_server():
 		return
 	multiplayer.peer_connected.connect(add_player)
@@ -83,4 +84,5 @@ func peer_connected(id) :
 func start_game():
 	# Hide the UI and unpause to start the game.
 	$UI.hide()
+	cam.enabled = true
 	get_tree().paused = false

@@ -44,13 +44,16 @@ expand_to_text_length = true
 
 [node name="map" parent="." instance=ExtResource("2_j8t54")]
 
-[node name="Coins" parent="." instance=ExtResource("3_oq0f8")]
+[node name="player" parent="map" instance=ExtResource("4_xjmig")]
+position = Vector2(1113, 1110)
 
-[node name="enemy" parent="." instance=ExtResource("5_xbv17")]
+[node name="coins" parent="map" instance=ExtResource("3_oq0f8")]
+
+[node name="enemy" parent="map" instance=ExtResource("5_xbv17")]
 position = Vector2(363, 83)
 
-[node name="player" parent="." instance=ExtResource("4_xjmig")]
-position = Vector2(1113, 1110)
+[node name="cam" type="Camera2D" parent="map"]
+position = Vector2(521, 529)
 
 [connection signal="pressed" from="UI/Net/Options/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="UI/Net/Options/Connect" to="." method="_on_connect_pressed"]
