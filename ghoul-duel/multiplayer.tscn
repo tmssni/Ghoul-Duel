@@ -45,13 +45,13 @@ expand_to_text_length = true
 [node name="Camera2D" type="Camera2D" parent="map"]
 position = Vector2(531, 533)
 
+[node name="enemy" parent="." groups=["Player"] instance=ExtResource("5_txex2")]
+position = Vector2(365, 84)
+
 [node name="player" parent="." instance=ExtResource("3_tju2k")]
 position = Vector2(571, 1185)
 
 [node name="Coins" parent="." instance=ExtResource("4_5homq")]
-
-[node name="enemy" parent="." instance=ExtResource("5_txex2")]
-position = Vector2(365, 84)
 
 [connection signal="pressed" from="UI/Net/Options/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="UI/Net/Options/Connect" to="." method="_on_connect_pressed"]

@@ -28,13 +28,13 @@ func _physics_process(delta):
 
 func _process(delta):
 	var velocity = Vector2.ZERO
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("d"):
 		velocity.x += 1 
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("a"):
 		velocity.x -= 1
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("w"):
 		velocity.y -= 1  
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("s"):
 		velocity.y += 1 
 	
 	velocity = velocity.normalized() * speed
