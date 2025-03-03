@@ -4,6 +4,7 @@ extends Node
 const SPAWN_RANDOM := 5.0
 
 const PORT = 4433
+var ip
 
 func _ready():
 	#if no player in server
@@ -14,6 +15,16 @@ func _ready():
 	for id in multiplayer.get_peers():
 		add_player(id)
 	
+	if OS.get_name() == "Windows":
+		ip = IP.get_local_addresses()[3]
+	else:
+		ip = IP.get_local_addresses()[3]
+		
+	#get ip address
+	for ip in IP.get_local_addresses():
+		if ip.begins_with("192.168") and not ip.ends_with(".1"):
+			ip = self.ip
+
 func _exit_tree():
 	if not multiplayer.is_server():
 		return
@@ -50,10 +61,11 @@ func _on_host_pressed() -> void:
 	#start as server
 	var peer = ENetMultiplayerPeer.new()
 	peer.create_server(PORT)
+	multiplayer.set_multiplayer_server(peer)
 	if peer.get_connection_status() == MultiplayerPeer.CONNECTION_DISCONNECTED:
 		OS.alert("Failed to start multiplayer server.")
 		return
-	multiplayer.multiplayer_peer = peer
+	#multiplayer.multiplayer_peer = peer
 	start_game()
 
 func _on_connect_pressed() -> void:
