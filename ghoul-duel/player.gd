@@ -40,7 +40,7 @@ func _physics_process(delta):
 
 		# Apply velocity using move_and_slide()
 		velocity = input_velocity
-		#move_and_slide()
+		move_and_slide()
 	
 		
 		# Handle animation
