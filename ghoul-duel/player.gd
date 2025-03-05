@@ -1,8 +1,7 @@
 extends CharacterBody2D
 
 @export var speed = 400
-
-var screen_size
+@export var flames_stolen := 0
 
 # Set by the authority, synchronized on spawn.
 @export var player := 1 :

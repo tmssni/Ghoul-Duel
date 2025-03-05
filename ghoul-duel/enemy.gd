@@ -3,7 +3,7 @@ extends CharacterBody2D
 var direction := Vector2.ZERO
 var screen_size
 @export var speed = 400
-@export var flames_stolen := 1
+@export var flames_stolen := 0
 #var target_player = null
 #var enemy = enemy.instance()
 #countEnemy += 1
