@@ -43,9 +43,10 @@ func _physics_process(delta):
 		# Apply velocity using move_and_slide()
 		velocity = input_velocity
 		move_and_slide()
-		collision = move_and_collide(velocity * delta)
-		if collision:
-			print(collision.collider.name)
+		#collision = move_and_collide(velocity * delta)
+		#if collision:
+			#print(collision.collider.name)
+		
 	
 		
 		# Handle animation

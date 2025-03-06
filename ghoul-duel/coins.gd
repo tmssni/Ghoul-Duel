@@ -1,6 +1,7 @@
 extends Area2D
 
 var collider_name
+var collider_obj
 
 @export var value: int = 1
 @onready var timer: Timer = $Timer
@@ -16,11 +17,14 @@ func _on_body_entered(body: Node2D) -> void:
 
 	if body is CharacterBody2D:
 		#GameController.coin_collected(value)
-		collider_name = body.collision.collider.name
-		timer.start()
-		collider_name.visible = false
+		#collider_obj = body.get_last_slide_collision()
+		#collider_name = collider_obj.name
+		#timer.start()
+		#collider_name.visible = false
 		#area.set_deferred("monitoring", false)
+		print("collided with: ", collider_obj.get_path())
 
 func _on_timeout() -> void:
 	#$Coins.set_deferred("monitoring", true) #"monitoring"
 	collider_name.visible = true
+	
