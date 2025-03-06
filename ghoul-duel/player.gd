@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var speed = 400
 @export var flames_stolen := 0
-
+var collision 
 # Set by the authority, synchronized on spawn.
 @export var player := 1 :
 	set(id):
@@ -43,6 +43,9 @@ func _physics_process(delta):
 		# Apply velocity using move_and_slide()
 		velocity = input_velocity
 		move_and_slide()
+		collision = move_and_collide(velocity * delta)
+		if collision:
+			print(collision.collider.name)
 	
 		
 		# Handle animation
@@ -52,7 +55,7 @@ func _physics_process(delta):
 			$AnimatedSprite2D.flip_h = velocity.x < 0
 		elif velocity.y != 0:
 			$AnimatedSprite2D.animation = "move"
-			
+		
 	
 func start(pos):
 	position = pos

@@ -1,6 +1,8 @@
 extends Area2D
-@export var value: int = 1
 
+var collider_name
+
+@export var value: int = 1
 @onready var timer: Timer = $Timer
 @onready var area: Area2D #$Area2D
 
@@ -14,10 +16,11 @@ func _on_body_entered(body: Node2D) -> void:
 
 	if body is CharacterBody2D:
 		#GameController.coin_collected(value)
+		collider_name = body.collision.collider.name
 		timer.start()
-		self.visible = false
+		collider_name.visible = false
 		#area.set_deferred("monitoring", false)
 
 func _on_timeout() -> void:
-	area.set_deferred("monitoring", true) #"monitoring"
-	self.visible = true
+	#$Coins.set_deferred("monitoring", true) #"monitoring"
+	collider_name.visible = true

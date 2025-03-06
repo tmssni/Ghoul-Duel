@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://xmrd1un3s7vg"]
+[gd_scene load_steps=4 format=3 uid="uid://xmrd1un3s7vg"]
 
 [ext_resource type="Script" path="res://coins.gd" id="1_h7wov"]
 [ext_resource type="Texture2D" uid="uid://b3xx2qa65sk2" path="res://assets/flames/blue flame.png" id="2_ab08o"]
+[ext_resource type="PackedScene" uid="uid://byxcdoun7v1rx" path="res://player.tscn" id="3_vpim2"]
 
 [node name="Coins" type="Area2D"]
 script = ExtResource("1_h7wov")
 metadata/_edit_lock_ = true
+
+[node name="Node2D" type="Node2D" parent="."]
 
 [node name="flame1" type="Sprite2D" parent="."]
 position = Vector2(39, 369)
@@ -763,6 +766,8 @@ position = Vector2(85, 87)
 polygon = PackedVector2Array(38, 356, 28, 371, 31, 381, 43, 381, 48, 373, 44, 364)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 2.0
+
+[node name="player" parent="." instance=ExtResource("3_vpim2")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
