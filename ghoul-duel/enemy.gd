@@ -14,7 +14,7 @@ func _ready():
 	screen_size = get_viewport_rect().size
 	
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	direction = Vector2.ZERO
 	#if is_instance_valid(target_player):
 		# normalized, bc we dont want get float vector
@@ -27,7 +27,7 @@ func _physics_process(delta):
 
 
 func _process(delta):
-	var velocity = Vector2.ZERO
+	velocity = Vector2.ZERO
 	if Input.is_action_pressed("d"):
 		velocity.x += 1 
 	if Input.is_action_pressed("a"):

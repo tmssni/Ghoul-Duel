@@ -21,9 +21,9 @@ func _ready():
 		ip = IP.get_local_addresses()[3]
 		
 	#get ip address
-	for ip in IP.get_local_addresses():
-		if ip.begins_with("192.168") and not ip.ends_with(".1"):
-			ip = self.ip
+	for address in IP.get_local_addresses():
+		if address.begins_with("192.168") and not address.ends_with(".1"):
+			ip = address  # This correctly updates the outer instance variable
 
 func _exit_tree():
 	if not multiplayer.is_server():

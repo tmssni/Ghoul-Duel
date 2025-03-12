@@ -22,7 +22,7 @@ func _ready():
 	pass
 	#$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 
-func _physics_process(delta):
+func _physics_process(_delta):
 		var input_velocity = Vector2.ZERO  # Reset velocity each frame
 		
 		if Input.is_action_pressed("ui_right"):
