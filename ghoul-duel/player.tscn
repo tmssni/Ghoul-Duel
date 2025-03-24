@@ -66,3 +66,4 @@ replication_config = SubResource("SceneReplicationConfig_pdagp")
 script = ExtResource("5_ruq8n")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+collide_with_areas = true
