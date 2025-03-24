@@ -17,14 +17,18 @@ func _on_body_entered(body: Node2D) -> void:
 
 	if body is CharacterBody2D:
 		#GameController.coin_collected(value)
-		collider_obj = body.get_collider()
-		collider_name = collider_obj.name
-		#timer.start()
-		collider_name.visible = false
-		#area.set_deferred("monitoring", false)
-		#body.visible = false
+		collider_obj = $player/RayCast2D.get_collider()
+		print(collider_obj)
 		print(body.flames_stolen)
-		#print("collided with: ", collider_obj.get_path())
+		#if collider_obj:
+			#collider_name = collider_obj.collider
+			#timer.start()
+			#collider_name.visible = false
+			
+			#print("collided with: ", collider_obj.position)
+		#	area.set_deferred("monitoring", false)
+			#body.visible = false
+		
 
 func _on_timeout() -> void:
 	#$Coins.set_deferred("monitoring", true) #"monitoring"
