@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dr1n33108k7i4"]
+[gd_scene load_steps=6 format=3 uid="uid://dr1n33108k7i4"]
 
 [ext_resource type="Script" path="res://multiplayer.gd" id="1_kogxo"]
 [ext_resource type="PackedScene" uid="uid://csh2obhqb1oaj" path="res://map.tscn" id="2_j8t54"]
 [ext_resource type="PackedScene" uid="uid://byxcdoun7v1rx" path="res://player.tscn" id="3_tju2k"]
+[ext_resource type="PackedScene" uid="uid://c0dtraeqsme31" path="res://chain_segments.tscn" id="5_rmxe4"]
 [ext_resource type="PackedScene" uid="uid://b8ivvlq2l441t" path="res://enemy.tscn" id="5_txex2"]
 
 [node name="Multiplayer" type="Node"]
@@ -50,9 +51,7 @@ position = Vector2(365, 84)
 [node name="player" parent="." instance=ExtResource("3_tju2k")]
 position = Vector2(571, 1185)
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
+[node name="Chain Segments" parent="." instance=ExtResource("5_rmxe4")]
 
 [connection signal="pressed" from="UI/Net/Options/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="UI/Net/Options/Connect" to="." method="_on_connect_pressed"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

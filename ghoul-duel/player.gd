@@ -1,7 +1,14 @@
 class_name Player extends CharacterBody2D
-
+@export var result : Dictionary
 @export var speed = 400
 @export var flames_stolen := 0
+
+@export var chain_scene: PackedScene = preload("res://chain_segments.tscn")  # Drag & drop ChainSegment.tscn into this in the editor
+var chain_segments = []  # Stores all chain segments
+var previous_positions = []  # Stores past positions of the player
+var max_positions = 10  # How many positions to store (adjust as needed)
+
+
 var collision 
 # Set by the authority, synchronized on spawn.
 @export var player := 1 :
@@ -57,7 +64,23 @@ func _physics_process(_delta):
 		elif velocity.y != 0:
 			$AnimatedSprite2D.animation = "move"
 		
+		move_and_slide()
+	# Store player's position history
+		previous_positions.insert(0, global_position)
+		if previous_positions.size() > max_positions * chain_segments.size():
+			previous_positions.pop_back()  
+			# Move each chain segment to follow the previous one
+		for i in range(chain_segments.size()):
+			var index = (i + 1) * max_positions
+			if index < previous_positions.size():
+				chain_segments[i].global_position = previous_positions[index]
 	
+func add_chain_segment():
+	var new_segment = chain_scene.instantiate()
+	get_parent().add_child(new_segment)  # Add to the scene
+	new_segment.global_position = global_position  # Spawn at player location
+	chain_segments.append(new_segment)
+
 func start(pos):
 	position = pos
 	show()
