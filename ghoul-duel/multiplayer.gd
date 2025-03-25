@@ -86,3 +86,42 @@ func start_game():
 	# Hide the UI and unpause to start the game.
 	$UI.hide()
 	get_tree().paused = false
+
+#LAVANYA's POSSIBLY INCORRECTLY PLACED CODE
+
+#grid variable
+var cells : int = 20
+var cell_size : int = 40
+
+#G snake variables
+var old_gdata : Array
+var snake_gdata : Array
+var snake_g : Array
+
+#movement variables
+var start_pos 
+var move_direction : Vector2
+var can_move : bool
+
+func generate_chain():
+	old_gdata.clear()
+	snake_gdata.clear()
+	snake_g.clear()
+	for i in range (3):
+		add_segment(start_pos + Vector2(0, i))
+
+func add_segment(pos):
+	snake_gdata.append(pos)
+	var GreenChain = map_scene.instantiate()
+	GreenChain.position = (pos * cell_size) * Vector2(0, cell_size)
+	add_child(GreenChain)
+	snake_g.append(GreenChain)
+
+func _on_timer_timeout() -> void:
+	can_move = true
+	old_gdata = [] + snake_gdata
+	snake_gdata[0] += move_direction
+	for i in range(len(snake_gdata)):
+		if i > 0:
+			snake_gdata[i] = old_gdata[i-1]
+		snake[i].position = (snake_gdata[i] * cell_size) + Vector2(0, cell_size)

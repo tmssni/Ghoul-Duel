@@ -14,11 +14,68 @@ offset_bottom = 1062.0
 color = Color(0, 0, 0, 1)
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(531, 531.5)
+position = Vector2(526, 533)
 scale = Vector2(0.501419, 0.500472)
 texture = ExtResource("2_c2c7r")
 
 [node name="static_body_2d" parent="." instance=ExtResource("2_51l00")]
-position = Vector2(-2, 0)
+position = Vector2(-8, 0)
 
-[node name="Coins" parent="." instance=ExtResource("3_lqh61")]
+[node name="Coin Container" type="Node" parent="."]
+
+[node name="Coins" parent="Coin Container" instance=ExtResource("3_lqh61")]
+position = Vector2(36, 815)
+
+[node name="Coins2" parent="Coin Container" instance=ExtResource("3_lqh61")]
+position = Vector2(123, 817)
+
+[node name="Coins3" parent="Coin Container" instance=ExtResource("3_lqh61")]
+position = Vector2(39, 729)
+
+[node name="Coins4" parent="Coin Container" instance=ExtResource("3_lqh61")]
+position = Vector2(124, 735)
+
+[node name="Coins5" parent="Coin Container" instance=ExtResource("3_lqh61")]
+position = Vector2(35, 647)
+
+[node name="Coins6" parent="Coin Container" instance=ExtResource("3_lqh61")]
+position = Vector2(123, 648)
+
+[node name="Coins7" parent="Coin Container" instance=ExtResource("3_lqh61")]
+position = Vector2(37, 563)
+
+[node name="Coins9" parent="Coin Container" instance=ExtResource("3_lqh61")]
+position = Vector2(35, 476)
+
+[node name="Coins10" parent="Coin Container" instance=ExtResource("3_lqh61")]
+position = Vector2(123, 476)
+
+[node name="Coins11" parent="Coin Container" instance=ExtResource("3_lqh61")]
+position = Vector2(37, 390)
+
+[node name="Coins13" parent="Coin Container" instance=ExtResource("3_lqh61")]
+position = Vector2(39, 306)
+
+[node name="Coins14" parent="Coin Container" instance=ExtResource("3_lqh61")]
+position = Vector2(121, 306)
+
+[node name="Coins15" parent="Coin Container" instance=ExtResource("3_lqh61")]
+position = Vector2(36, 220)
+
+[node name="Coins17" parent="Coin Container" instance=ExtResource("3_lqh61")]
+position = Vector2(76, 145)
+
+[node name="Coins18" parent="Coin Container" instance=ExtResource("3_lqh61")]
+position = Vector2(145, 87)
+
+[node name="Coins19" parent="Coin Container" instance=ExtResource("3_lqh61")]
+position = Vector2(230, 85)
+
+[node name="Coins16" parent="Coin Container" instance=ExtResource("3_lqh61")]
+position = Vector2(119, 216)
+
+[node name="Coins12" parent="Coin Container" instance=ExtResource("3_lqh61")]
+position = Vector2(122, 394)
+
+[node name="Coins8" parent="Coin Container" instance=ExtResource("3_lqh61")]
+position = Vector2(123, 564)

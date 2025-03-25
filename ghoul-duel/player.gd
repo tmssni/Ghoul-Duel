@@ -1,8 +1,7 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 @export var speed = 400
 @export var flames_stolen := 0
-#@export var result : Dictionary
 var collision 
 # Set by the authority, synchronized on spawn.
 @export var player := 1 :
@@ -13,8 +12,6 @@ var collision
 # Player synchronized input
 
 @onready var input = $PlayerInput
-
-
 
 func _ready():
 	# Set the camera as current if we are this player.
@@ -48,17 +45,7 @@ func _physics_process(_delta):
 		move_and_slide()
 		#collision = move_and_collide(velocity * delta)
 		#if collision:
-		var space_state = get_world_2d().direct_space_state
-	# use global coordinates, not local to node
-		var query = PhysicsRayQueryParameters2D.create(Vector2(0, 0), Vector2(50, 100))
-		var result = space_state.intersect_ray(query)
-		
-		if result:
-			#print("Hit at point: ", result.position)
-			flames_stolen = flames_stolen + 1
-			#print("Collider name: ", result.collider, "node")
-		#else:
-			#print("Not noted")
+			#print(collision.collider.name)
 		
 	
 		
