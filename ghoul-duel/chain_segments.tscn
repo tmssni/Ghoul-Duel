@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0dtraeqsme31"]
+[gd_scene load_steps=3 format=3 uid="uid://c0dtraeqsme31"]
 
 [ext_resource type="Texture2D" uid="uid://bohy3sptoceuf" path="res://assets/flames/green flame.png" id="1_oq0qe"]
+[ext_resource type="Script" path="res://chain_segments.gd" id="2_s48ww"]
 
 [node name="Chain Segments" type="Sprite2D"]
 texture = ExtResource("1_oq0qe")
+script = ExtResource("2_s48ww")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-2, -16, -3, -10, -9, -5, -9, 1, -9, 6, -7, 13, 3, 17, 8, 12, 9, 4, 6, -2, 3, -5, 4, -13)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
