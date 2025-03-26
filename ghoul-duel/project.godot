@@ -20,10 +20,6 @@ config/icon="res://icon.svg"
 window/size/viewport_width=1060
 window/size/viewport_height=1060
 
-[global_group]
-
-enemy=""
-
 [input]
 
 ui_left={

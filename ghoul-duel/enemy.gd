@@ -12,7 +12,6 @@ var screen_size
 
 func _ready():
 	screen_size = get_viewport_rect().size
-	add_to_group("enemy")
 	
 
 func _physics_process(_delta):
