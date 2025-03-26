@@ -49,7 +49,7 @@ position = Vector2(531, 533)
 position = Vector2(365, 84)
 
 [node name="player" parent="." instance=ExtResource("3_tju2k")]
-position = Vector2(571, 1185)
+position = Vector2(337, 1005)
 
 [node name="Chain Segments" parent="player" instance=ExtResource("5_rmxe4")]
 position = Vector2(-571, -1185)

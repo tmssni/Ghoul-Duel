@@ -20,3 +20,13 @@ func remove_segment(segment: Node):
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "enemy":
 		print("Enemy hit the chain!")
+		queue_free()
+		#var index = chain_segments.find(segment)
+		#if index != -1:
+				## Remove all chain segments from the hit segment onwards
+				#for i in range(index, chain_segments.size()):
+					#var seg_to_remove = chain_segments[i]
+					#seg_to_remove.queue_free()  # Remove the segment from the scene
+				## Remove them from the array as well
+				#chain_segments = chain_segments.slice(0, index)
+				#print("Segments removed! Remaining:", chain_segments.size())
