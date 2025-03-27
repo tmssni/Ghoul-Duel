@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy2ca0v1jiwfh"]
+
+[ext_resource type="Script" path="res://green.gd" id="1_wishg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbm47"]
+size = Vector2(130, 125)
+
+[node name="Green" type="Area2D"]
+position = Vector2(141, 126)
+script = ExtResource("1_wishg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_gbm47")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

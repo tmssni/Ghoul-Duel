@@ -39,25 +39,3 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 				print("Removed segment successfully.")
 
 			print("Chain segments after removal:", player.chain_segments.size())
-
-
-#func _on_area_2d_body_entered(body: Node2D) -> void:
-	#if body.name == "enemy":
-		#print("Enemy hit the chain!")
-#
-		#if chain_segments.size() > 0:
-			#print("Chain segments before removal:", chain_segments.size())
-#
-			#var segment_to_remove = chain_segments.pop_back()  # Remove last segment
-			#print("Segment to remove:", segment_to_remove)
-#
-			#if segment_to_remove == null:
-				#print("ERROR: segment_to_remove is null!")
-			#elif not is_instance_valid(segment_to_remove):
-				#print("ERROR: segment_to_remove is not valid!")
-			#else:
-				#chain_segments.erase(segment_to_remove)  # Remove from array
-				#segment_to_remove.queue_free()  # Remove it from the scene
-				#print("Removed segment successfully.")
-#
-			#print("Chain segments after removal:", chain_segments.size())
