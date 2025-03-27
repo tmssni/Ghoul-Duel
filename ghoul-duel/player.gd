@@ -54,12 +54,7 @@ func _physics_process(_delta):
 		# Apply velocity using move_and_slide()
 		velocity = input_velocity
 		move_and_slide()
-		#collision = move_and_collide(velocity * delta)
-		#if collision:
-			#print(collision.collider.name)
-		
-	
-		
+
 		# Handle animation
 		if velocity.x != 0:
 			$AnimatedSprite2D.animation = "idle"
@@ -67,7 +62,7 @@ func _physics_process(_delta):
 			$AnimatedSprite2D.flip_h = velocity.x < 0
 		elif velocity.y != 0:
 			$AnimatedSprite2D.animation = "move"
-		
+
 		# Store player's position history every frame
 		timer += 2
 		if timer >= position_history_frequency:
@@ -79,7 +74,7 @@ func _physics_process(_delta):
 		previous_positions.insert(0, global_position)
 		if previous_positions.size() > max_positions * chain_segments.size():
 			previous_positions.pop_back()  
-			
+
 			# Update each chain segment to follow the player with snake-like effect
 		for i in range(chain_segments.size()):
 			var target_index = i * segment_follow_distance
@@ -97,7 +92,6 @@ func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
-
 
 func remove_segment(segment: Node):
 	if segment in chain_segments:
