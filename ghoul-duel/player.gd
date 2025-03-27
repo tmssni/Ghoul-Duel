@@ -1,6 +1,6 @@
 class_name Player extends CharacterBody2D
 @export var result : Dictionary
-@export var speed = 400
+@export var speed = 200
 @export var flames_stolen := 0
 
 @export var chain_scene: PackedScene = preload("res://chain_segments.tscn")  # Drag & drop ChainSegment.tscn into this in the editor

@@ -64,7 +64,3 @@ zoom = Vector2(3.055, 3.055)
 [node name="PlayerInput" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_pdagp")
 script = ExtResource("5_ruq8n")
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(-1, 4)
-collide_with_areas = true
