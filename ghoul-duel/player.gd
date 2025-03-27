@@ -4,7 +4,7 @@ class_name Player extends CharacterBody2D
 @export var flames_stolen := 0
 
 @export var chain_scene: PackedScene = preload("res://chain_segments.tscn")  # Drag & drop ChainSegment.tscn into this in the editor
-var chain_segments = []  # Stores all chain segments
+@export var chain_segments = []  # Stores all chain segments
 var previous_positions = []  # Stores past positions of the player
 var max_positions = 10  # How many positions to store (adjust as needed)
 
@@ -29,20 +29,21 @@ func _ready():
 		#$Camera2D.current = true
 	#if player == multiplayer.get_unique_id():
 		#$Camera2D.current = true
-	pass
+	
 	#$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
+	add_to_group("player")
 
 func _physics_process(_delta):
 		var input_velocity = Vector2.ZERO  # Reset velocity each frame
 		z_index = 1
 		if Input.is_action_pressed("ui_right"):
-			input_velocity.x += 1 
+			input_velocity.x += 0.1 
 		if Input.is_action_pressed("ui_left"):
-			input_velocity.x -= 1
+			input_velocity.x -= 0.1
 		if Input.is_action_pressed("ui_up"):
-			input_velocity.y -= 1 
+			input_velocity.y -= 0.1
 		if Input.is_action_pressed("ui_down"):
-			input_velocity.y += 1
+			input_velocity.y += 0.1
 		
 		if input_velocity.length() > 0:
 			input_velocity = input_velocity.normalized() * speed
@@ -68,7 +69,7 @@ func _physics_process(_delta):
 			$AnimatedSprite2D.animation = "move"
 		
 		# Store player's position history every frame
-		timer += 3
+		timer += 2
 		if timer >= position_history_frequency:
 			timer = 0
 			previous_positions.insert(0, global_position)
@@ -84,7 +85,7 @@ func _physics_process(_delta):
 			var target_index = i * segment_follow_distance
 			var index = (i + 1) * max_positions
 			if index < previous_positions.size():
-				chain_segments[i].global_position = previous_positions[index]
+				chain_segments[i].global_position = previous_positions[index] - Vector2(0.03,0.03)
 	
 func add_chain_segment():
 	var new_segment = chain_scene.instantiate()
@@ -96,3 +97,10 @@ func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
+
+
+func remove_segment(segment: Node):
+	if segment in chain_segments:
+		chain_segments.erase(segment)  # Remove from array
+		segment.queue_free()  # Remove it from the scene
+		print("Tail segment removed")
