@@ -18,8 +18,4 @@ func _on_area_2d_body_entered(body: Node2D):
 		body.flames_stolen += 1
 		for i in range(value):
 			body.add_chain_segment()  # Call function in player script
-			self.hide()
-			await get_tree().create_timer(5)
-
-func _on_timer_timeout():
-	self.show()
+			queue_free()
