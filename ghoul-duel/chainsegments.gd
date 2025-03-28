@@ -34,6 +34,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			elif not is_instance_valid(segment_to_remove):
 				print("ERROR: PURPLE segment_to_remove is not valid!")
 			else:
+				body.add_chain_segment()
 				enemy.chainsegments.erase(segment_to_remove)
 				segment_to_remove.queue_free()
 				print("Removed PURPLE segment successfully.")
