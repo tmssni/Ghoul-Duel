@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dp834itcokuy6"]
+[gd_scene load_steps=6 format=3 uid="uid://dp834itcokuy6"]
 
 [ext_resource type="FontFile" uid="uid://bklqh6kfdc8v0" path="res://assets/font/kirifont/KiriFont.otf" id="1_0n6m8"]
+[ext_resource type="Script" path="res://green_score.gd" id="2_77agx"]
 [ext_resource type="Theme" uid="uid://dvqtidflm4ya6" path="res://theme.tres" id="2_f538a"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ndr0d"]
@@ -9,9 +10,9 @@
 
 [node name="HUD" type="CanvasLayer"]
 
-[node name="Label" type="Label" parent="."]
+[node name="green_score" type="Label" parent="."]
 z_index = 2
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 124.0
@@ -29,10 +30,11 @@ text = "0"
 label_settings = SubResource("LabelSettings_bodql")
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("2_77agx")
 
-[node name="Label2" type="Label" parent="."]
+[node name="purple_score" type="Label" parent="."]
 z_index = 2
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 879.0
