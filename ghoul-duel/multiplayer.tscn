@@ -11,23 +11,46 @@
 [node name="Multiplayer" type="Node"]
 script = ExtResource("1_nguag")
 
+[node name="map" parent="." instance=ExtResource("2_j8t54")]
+
+[node name="Camera2D" type="Camera2D" parent="map"]
+position = Vector2(531, 533)
+
 [node name="HUD" parent="." instance=ExtResource("2_cnxph")]
+
+[node name="enemy" parent="." groups=["Player", "enemy"] instance=ExtResource("5_txex2")]
+z_index = 1
+position = Vector2(365, 84)
+
+[node name="chainsegments" parent="enemy" instance=ExtResource("5_8kf2o")]
+
+[node name="player" parent="." instance=ExtResource("3_tju2k")]
+position = Vector2(337, 1005)
+
+[node name="Chain Segments" parent="player" instance=ExtResource("5_rmxe4")]
+position = Vector2(-571, -1185)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -10.0
+offset_top = 6.0
+offset_right = 1053.0
+offset_bottom = 1072.0
 
-[node name="Net" type="HBoxContainer" parent="UI"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Net" type="Panel" parent="UI"]
+layout_mode = 1
+offset_right = 78.0
+offset_bottom = 128.0
 
 [node name="Options" type="VBoxContainer" parent="UI/Net"]
 layout_mode = 2
+offset_left = 287.0
+offset_top = 363.0
+offset_right = 717.0
+offset_bottom = 531.0
 
-[node name="Lable" type="Label" parent="UI/Net/Options"]
+[node name="Label" type="Label" parent="UI/Net/Options"]
 layout_mode = 2
 text = "Direct:"
 
@@ -43,24 +66,6 @@ text = "Connect"
 layout_mode = 2
 text = "127.0.0.1"
 expand_to_text_length = true
-
-[node name="map" parent="." instance=ExtResource("2_j8t54")]
-script = null
-
-[node name="Camera2D" type="Camera2D" parent="map"]
-position = Vector2(531, 533)
-
-[node name="enemy" parent="." groups=["Player", "enemy"] instance=ExtResource("5_txex2")]
-z_index = 1
-position = Vector2(365, 84)
-
-[node name="chainsegments" parent="enemy" instance=ExtResource("5_8kf2o")]
-
-[node name="player" parent="." instance=ExtResource("3_tju2k")]
-position = Vector2(337, 1005)
-
-[node name="Chain Segments" parent="player" instance=ExtResource("5_rmxe4")]
-position = Vector2(-571, -1185)
 
 [connection signal="pressed" from="UI/Net/Options/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="UI/Net/Options/Connect" to="." method="_on_connect_pressed"]

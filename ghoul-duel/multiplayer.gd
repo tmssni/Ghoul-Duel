@@ -36,11 +36,11 @@ func _exit_tree():
 func add_player(id: int):
 	var character = load("res://player.tscn").instantiate()
 	# Set player id. preload("res://player.tscn")
-	character.player = str(id)
+	#character.name = str(id)
 	# Randomize character position. (WILL REPLACE WITH SPAWN POINT EVENTUALLY)
-	var pos := Vector2.from_angle(randf() * 2 * PI)
-	character.position = Vector2(pos.x * SPAWN_RANDOM * randf(), pos.y * SPAWN_RANDOM * randf())
-	character.name = str(id)
+	#var pos := Vector2.from_angle(randf() * 2 * PI)
+	#character.position = Vector2(pos.x * SPAWN_RANDOM * randf(), pos.y * SPAWN_RANDOM * randf())
+	#character.name = str(id)
 	$Players.add_child(character, true)
 
 
@@ -62,21 +62,22 @@ func _on_host_pressed() -> void:
 	#start as server
 	var peer = ENetMultiplayerPeer.new()
 	peer.create_server(PORT)
-	multiplayer.set_multiplayer_server(peer)
+	print("host game!")
 	if peer.get_connection_status() == MultiplayerPeer.CONNECTION_DISCONNECTED:
 		OS.alert("Failed to start multiplayer server.")
 		return
-	#multiplayer.multiplayer_peer = peer
+	multiplayer.multiplayer_peer = peer
 	start_game()
 
 func _on_connect_pressed() -> void:
 	#start as client.
-	var txt : String = $UI/Net/Options/Remote.text
-	if txt == "":
-		OS.alert("Need a remote to connect to.")
-		return
+	#var txt : String = $UI/Net/Options/Remote.text
+	#if txt == "":
+		#OS.alert("Need a remote to connect to.")
+		#return
 	var peer = ENetMultiplayerPeer.new()
-	peer.create_client(txt, PORT)
+	peer.create_client(ip, PORT)
+	print("join game!")
 	if peer.get_connection_status() == MultiplayerPeer.CONNECTION_DISCONNECTED:
 		OS.alert("Failed to start multiplayer client.")
 		return

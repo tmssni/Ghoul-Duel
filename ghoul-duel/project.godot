@@ -25,7 +25,6 @@ GameManager="*res://game_manager.gd"
 
 window/size/viewport_width=1060
 window/size/viewport_height=1060
-window/size/always_on_top=true
 
 [global_group]
 
