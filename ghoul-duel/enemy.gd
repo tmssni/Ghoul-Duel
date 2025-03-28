@@ -96,12 +96,12 @@ func _on_home_base_body_entered(body):
 	if body == self:
 		print("Enemy entered home base! Pushing out...")
 		if body.position.y < 950:
-			body.position.y -= 100  # Move up
+			body.position.y -= 50  # Move up
 			print("up")
 		elif body.position.x < 350:
-			body.position.x -= 100  # Move left
+			body.position.x -= 50  # Move left
 			print("left")
 		#elif body.position.x < 410:
 		else:
-			body.position.x += 100  # Move right
+			body.position.x += 50  # Move right
 			print("right")

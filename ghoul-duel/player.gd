@@ -106,6 +106,6 @@ func _on_home_base_body_entered(body):
 		if body.position.y > 115:
 			body.position.y += 50  # Move up
 		elif body.position.x < 348:
-			body.position.x -= 100  # Move left
+			body.position.x -= 50  # Move left
 		else:
-			body.position.x += 100  # Move right
+			body.position.x += 50  # Move right
