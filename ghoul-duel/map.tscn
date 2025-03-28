@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://csh2obhqb1oaj"]
+[gd_scene load_steps=8 format=3 uid="uid://csh2obhqb1oaj"]
 
+[ext_resource type="Script" path="res://map.gd" id="1_cx18x"]
 [ext_resource type="PackedScene" uid="uid://dh2c6o45ypcvy" path="res://static_body_2d.tscn" id="2_51l00"]
 [ext_resource type="Texture2D" uid="uid://ycfjqh1vx6da" path="res://assets/maps/pixelcut-export.png" id="2_c2c7r"]
 [ext_resource type="PackedScene" uid="uid://xmrd1un3s7vg" path="res://coins.tscn" id="3_lqh61"]
+[ext_resource type="PackedScene" uid="uid://bdi6yuog4tofa" path="res://purple.tscn" id="5_dit85"]
 [ext_resource type="PackedScene" uid="uid://cy2ca0v1jiwfh" path="res://green.tscn" id="5_rlcve"]
+[ext_resource type="Script" path="res://purple.gd" id="6_eipue"]
 
 [node name="map" type="Node"]
+script = ExtResource("1_cx18x")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -6.0
@@ -25,6 +29,9 @@ position = Vector2(-12, 0)
 
 [node name="Green" parent="HomeBases" instance=ExtResource("5_rlcve")]
 position = Vector2(348, 979)
+
+[node name="Purple" parent="HomeBases" instance=ExtResource("5_dit85")]
+script = ExtResource("6_eipue")
 
 [node name="Coin Container" type="Node" parent="."]
 
@@ -84,3 +91,5 @@ position = Vector2(122, 394)
 
 [node name="Coins8" parent="Coin Container" instance=ExtResource("3_lqh61")]
 position = Vector2(123, 564)
+
+[connection signal="body_entered" from="HomeBases/Purple" to="HomeBases/Purple" method="_on_body_entered"]

@@ -12,7 +12,7 @@ var max_positions = 10  # How many positions to store (adjust as needed)
 var position_history_frequency = 1  # Save history every frame
 var segment_follow_distance = 5    # Each segment follows a position further back in history
 var timer = 0
-var collision 
+
 # Set by the authority, synchronized on spawn.
 @export var player := 1 :
 	set(id):
@@ -46,8 +46,7 @@ func _physics_process(_delta):
 
 		velocity = input_velocity
 		move_and_slide()
-		
-
+		# <<<<<<< HEAD =======  >>>>>>> 1d7aba440725a5f3c239e6b1c303fee2813e6900
 		# Handle animation
 		if velocity.x != 0:
 			$AnimatedSprite2D.animation = "idle"
@@ -101,3 +100,12 @@ func delete_chain():
 func chain_size():
 	var num = chain_segments.size()
 	return num
+	
+func _on_home_base_body_entered(body):
+	if body == self:
+		if body.position.y > 115:
+			body.position.y += 50  # Move up
+		elif body.position.x < 348:
+			body.position.x -= 50  # Move left
+		else:
+			body.position.x += 50  # Move right
