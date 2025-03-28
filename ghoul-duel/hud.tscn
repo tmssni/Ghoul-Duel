@@ -1,15 +1,46 @@
-[gd_scene format=3 uid="uid://dp834itcokuy6"]
+[gd_scene load_steps=5 format=3 uid="uid://dp834itcokuy6"]
+
+[ext_resource type="FontFile" uid="uid://bklqh6kfdc8v0" path="res://assets/font/kirifont/KiriFont.otf" id="1_0n6m8"]
+[ext_resource type="Theme" uid="uid://dvqtidflm4ya6" path="res://theme.tres" id="2_f538a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ndr0d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bodql"]
 
 [node name="HUD" type="CanvasLayer"]
 
-[node name="ScorePanel" type="Panel" parent="."]
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 50.0
-grow_horizontal = 2
-
 [node name="Label" type="Label" parent="."]
-anchors_preset = 10
+z_index = 2
+anchors_preset = -1
 anchor_right = 1.0
-offset_bottom = 23.0
+anchor_bottom = 1.0
+offset_left = 124.0
+offset_top = 2.0
+offset_right = -866.0
+offset_bottom = -1005.0
 grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = ExtResource("1_0n6m8")
+theme_override_font_sizes/font_size = 109
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ndr0d")
+text = "0"
+label_settings = SubResource("LabelSettings_bodql")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 182.0
+offset_top = 13.0
+offset_right = 896.0
+offset_bottom = 42.0
+theme = ExtResource("2_f538a")
+value = 50.0
+rounded = true
+show_percentage = false
+
+[node name="Panel" type="Panel" parent="."]
+z_index = -1
+offset_right = 1064.0
+offset_bottom = 52.0

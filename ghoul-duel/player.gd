@@ -109,6 +109,7 @@ func delete_chain():
 	# Iterate through all chain segments and queue them for deletion
 	for segment in chain_segments:
 		segment.queue_free()
+	chain_segments.clear()
 
 func chain_size():
 	var num = chain_segments.size()

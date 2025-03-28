@@ -1,0 +1,33 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://dvqtidflm4ya6"]
+
+[ext_resource type="FontFile" uid="uid://btt6p4g6t3v83" path="res://assets/font/kirifont/KiriFont.ttf" id="1_hft0b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mn77x"]
+bg_color = Color(0.422435, 0.236572, 0.670103, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.637843, 0.637843, 0.637843, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lpqm2"]
+bg_color = Color(1.68458e-06, 0.632115, 0.14668, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 15
+border_width_bottom = 4
+border_color = Color(0.639216, 0.639216, 0.639216, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_left = 10
+
+[resource]
+ProgressBar/colors/font_outline_color = Color(1, 1, 1, 1)
+ProgressBar/constants/outline_size = 3
+ProgressBar/font_sizes/font_size = 20
+ProgressBar/fonts/font = ExtResource("1_hft0b")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_mn77x")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_lpqm2")
