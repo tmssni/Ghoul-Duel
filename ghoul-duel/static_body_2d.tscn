@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dh2c6o45ypcvy"]
+[gd_scene load_steps=4 format=3 uid="uid://dh2c6o45ypcvy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f5u0t"]
 radius = 20.0
@@ -7,6 +7,10 @@ height = 56.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dbfr2"]
 radius = 22.0
 height = 71.8781
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ygw30"]
+radius = 18.3737
+height = 49.2812
 
 [node name="StaticBody2D" type="StaticBody2D"]
 
@@ -78,3 +82,8 @@ shape = SubResource("CapsuleShape2D_dbfr2")
 position = Vector2(259, 448)
 rotation = -1.60751
 shape = SubResource("CapsuleShape2D_dbfr2")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+position = Vector2(532, 539)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ygw30")
