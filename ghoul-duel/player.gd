@@ -21,16 +21,9 @@ var timer = 0
 		$PlayerInput.set_multiplayer_authority(id)
 # Player synchronized input
 
-@onready var input = $PlayerInput
+#@onready var input = $PlayerInput
 
 func _ready():
-	# Set the camera as current if we are this player.
-	#if player == multiplayer.get_unique_id():
-		#$Camera2D.current = true
-	#if player == multiplayer.get_unique_id():
-		#$Camera2D.current = true
-	
-	#$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 	add_to_group("player")
 
 func _physics_process(_delta):
@@ -51,12 +44,9 @@ func _physics_process(_delta):
 		else:
 			$AnimatedSprite2D.stop()
 
-		# Apply velocity using move_and_slide()
 		velocity = input_velocity
 		move_and_slide()
-		
-	
-		
+		# <<<<<<< HEAD =======  >>>>>>> 1d7aba440725a5f3c239e6b1c303fee2813e6900
 		# Handle animation
 		if velocity.x != 0:
 			$AnimatedSprite2D.animation = "idle"
@@ -94,7 +84,6 @@ func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
-
 
 func remove_segment(segment: Node):
 	if segment in chain_segments:
