@@ -17,12 +17,12 @@ var timer = 0
 @export var player := 1 :
 	set(id):
 		player = id
-		# Give authority over the player input to the appropriate peer.
 		
-		$PlayerInput.set_multiplayer_authority(id)
+		# Give authority over the player input to the appropriate peer.
+		#$PlayerInput.set_multiplayer_authority(id)
 # Player synchronized input
 
-@onready var input = $PlayerInput
+#@onready var input = $PlayerInput
 
 func _ready():
 	add_to_group("player")

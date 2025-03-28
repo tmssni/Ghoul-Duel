@@ -1,6 +1,7 @@
 extends Node
 
 var flames = 0
+var Players = {}
 
 func add_point():
 	flames += 1
