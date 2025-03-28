@@ -8,3 +8,4 @@ func _on_body_entered(body: Node2D) -> void:
 		print("collision between purple base & enemy")
 		global.enemy_score += body.chain_size()
 		body.delete_chain()
+	global._progress_bar(global.player_score, global.enemy_score)
