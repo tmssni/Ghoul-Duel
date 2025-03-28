@@ -18,11 +18,14 @@ config/icon="res://icon.svg"
 [autoload]
 
 global="*res://global.gd"
+MultiplayerManager="*res://multiplayer/multiplayer_manager.gd"
+GameManager="*res://game_manager.gd"
 
 [display]
 
 window/size/viewport_width=1060
 window/size/viewport_height=1060
+window/size/always_on_top=true
 
 [input]
 
