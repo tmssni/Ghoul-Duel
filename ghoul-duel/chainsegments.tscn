@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5wxbxavhpnib"]
+
+[ext_resource type="Texture2D" uid="uid://c400s28wt816k" path="res://assets/flames/purple flame.png" id="1_0cdod"]
+[ext_resource type="Script" path="res://chainsegments.gd" id="2_c2j6g"]
+
+[node name="chainsegments" type="Sprite2D"]
+z_index = 1
+position = Vector2(2.25, -4.25)
+scale = Vector2(0.890244, 0.819149)
+texture = ExtResource("1_0cdod")
+script = ExtResource("2_c2j6g")
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-2, -17, -11, -9, -9, 0, -11, 6, -9, 12, -4, 16, 3, 16, 6, 13, 10, 7, 9, 1, 7, -7, -1, -11, 3, -17)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

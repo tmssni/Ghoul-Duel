@@ -13,9 +13,7 @@ func _process(_delta: float):
 	pass
 
 func _on_area_2d_body_entered(body: Node2D):
-	print("Collision with:", body.name)  # Debugging line
-	if body.name == "player": #|| body.name == "enemy":
-		body.flames_stolen += 1
+	if body.name == "player" || body.name == "enemy":
 		for i in range(value):
 			body.add_chain_segment()  # Call function in player script
 			queue_free()
