@@ -16,7 +16,3 @@ func join_game():
 	print("join game as player two")
 	%UI.hide()
 	MultiplayerManager.join_game()
-
-
-func _on_host_game_pressed() -> void:
-	pass # Replace with function body.
