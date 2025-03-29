@@ -1,0 +1,95 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2jm5gnh8ixro"]
+
+[ext_resource type="Script" path="res://scripts/multiplayer.gd" id="1_l0f8v"]
+[ext_resource type="Texture2D" uid="uid://b241u0e3u2nea" path="res://assets/lobby + results/lobby two.png" id="2_yauj3"]
+[ext_resource type="FontFile" uid="uid://gdn1qrce6ar" path="res://assets/font/architect-s-daughter/ArchitectsDaughter.ttf" id="3_ys4jw"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1067.0
+offset_bottom = 1065.0
+script = ExtResource("1_l0f8v")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 2.0
+offset_right = 1060.0
+offset_bottom = 1058.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = -3.0
+offset_top = 247.0
+offset_right = 1058.0
+offset_bottom = 854.0
+texture = ExtResource("2_yauj3")
+
+[node name="Net" type="Panel" parent="."]
+layout_mode = 1
+offset_left = 47.0
+offset_top = 429.0
+offset_right = 47.0
+offset_bottom = 429.0
+
+[node name="Options" type="VBoxContainer" parent="Net"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 56.0
+offset_right = 910.0
+offset_bottom = 182.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Host" type="Button" parent="Net/Options"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_disabled_color = Color(0.388235, 0.105882, 0.568627, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.388235, 0.105882, 0.568627, 1)
+theme_override_colors/font_hover_color = Color(0.388235, 0.105882, 0.568627, 1)
+theme_override_colors/font_pressed_color = Color(0.388235, 0.105882, 0.568627, 1)
+theme_override_colors/font_focus_color = Color(0.388235, 0.105882, 0.568627, 1)
+theme_override_colors/icon_normal_color = Color(0.392157, 0.0627451, 0.556863, 1)
+theme_override_colors/icon_focus_color = Color(0.388235, 0.105882, 0.568627, 1)
+theme_override_colors/icon_pressed_color = Color(0.388235, 0.105882, 0.568627, 1)
+theme_override_colors/icon_hover_color = Color(0.388235, 0.105882, 0.568627, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.388235, 0.105882, 0.568627, 1)
+theme_override_colors/icon_disabled_color = Color(0.388235, 0.105882, 0.568627, 1)
+theme_override_fonts/font = ExtResource("3_ys4jw")
+theme_override_font_sizes/font_size = 20
+text = "Host Game"
+
+[node name="Join" type="Button" parent="Net/Options"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_disabled_color = Color(0.0627451, 0.513726, 0.309804, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.0627451, 0.513726, 0.309804, 1)
+theme_override_colors/font_hover_color = Color(0.0627451, 0.513726, 0.309804, 1)
+theme_override_colors/font_pressed_color = Color(0.0627451, 0.513726, 0.309804, 1)
+theme_override_colors/font_focus_color = Color(0.0627451, 0.513726, 0.309804, 1)
+theme_override_colors/icon_normal_color = Color(0.0627451, 0.513726, 0.309804, 1)
+theme_override_colors/icon_focus_color = Color(0.0627451, 0.513726, 0.309804, 1)
+theme_override_colors/icon_pressed_color = Color(0.0627451, 0.513726, 0.309804, 1)
+theme_override_colors/icon_hover_color = Color(0.0627451, 0.513726, 0.309804, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.0627451, 0.513726, 0.309804, 1)
+theme_override_colors/icon_disabled_color = Color(0.0627451, 0.513726, 0.309804, 1)
+theme_override_fonts/font = ExtResource("3_ys4jw")
+theme_override_font_sizes/font_size = 20
+text = "Join Game"
+icon_alignment = 1
+
+[node name="Start game" type="Button" parent="Net/Options"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_ys4jw")
+theme_override_font_sizes/font_size = 20
+text = "Start Game"
+
+[connection signal="pressed" from="Net/Options/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Net/Options/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="Net/Options/Start game" to="." method="_on_start_pressed"]

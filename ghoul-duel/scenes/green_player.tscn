@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bgvlqqt6usasq"]
 
-[ext_resource type="Texture2D" uid="uid://dxvn7lft28ugk" path="res://assets/green team/idle down.png" id="2_b858j"]
-[ext_resource type="Texture2D" uid="uid://cpwmttn00lxsw" path="res://assets/green team/idle up.png" id="3_v87ru"]
-[ext_resource type="Texture2D" uid="uid://dpypwrr2oho54" path="res://assets/green team/moving green.png" id="4_dxfs7"]
+[ext_resource type="Texture2D" uid="uid://dxvn7lft28ugk" path="res://assets/green team/idle down.png" id="1_2ebnk"]
+[ext_resource type="Texture2D" uid="uid://cpwmttn00lxsw" path="res://assets/green team/idle up.png" id="2_poiyj"]
+[ext_resource type="Texture2D" uid="uid://dpypwrr2oho54" path="res://assets/green team/moving green.png" id="3_fu4ju"]
 
 [sub_resource type="GDScript" id="GDScript_f7gwx"]
 script/source = "extends CharacterBody2D
@@ -40,10 +40,10 @@ func _physics_process(delta: float) -> void:
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_b858j")
+"texture": ExtResource("1_2ebnk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_v87ru")
+"texture": ExtResource("2_poiyj")
 }],
 "loop": true,
 "name": &"idle",
@@ -51,10 +51,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_b858j")
+"texture": ExtResource("1_2ebnk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_dxfs7")
+"texture": ExtResource("3_fu4ju")
 }],
 "loop": true,
 "name": &"move",

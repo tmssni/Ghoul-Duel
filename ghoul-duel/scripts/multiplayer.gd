@@ -1,4 +1,4 @@
-extends Node
+extends Control
 #multiplayer_controller.gd
 
 @export var ip = "127.0.0.1"
@@ -23,9 +23,16 @@ func player_disconnected(id):
 
 func connected_to_server():
 	print("connected to server")
+# Called when the node enters the scene tree for the first time.
 
 func connection_failed():
 	print("connection failed")
+
+@rpc("any_peer", "call_local")
+func start_game():
+	var scene = load("res://scenes/multiplayer.tscn").instantiate()
+	get_tree().root.add_child(scene)
+	self.hide()
 
 func _on_host_pressed():
 	peer = ENetMultiplayerPeer.new()
@@ -49,5 +56,6 @@ func _on_join_pressed():
 	
 	print("join: waiting to join")
 
-func _on_start__pressed() -> void:
-	$UI.hide()
+func _on_start_pressed():
+	start_game.rpc()
+# Called every frame. 'delta' is the elapsed time since the previous frame.
