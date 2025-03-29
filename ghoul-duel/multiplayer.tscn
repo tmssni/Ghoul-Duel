@@ -24,12 +24,13 @@ position = Vector2(531, 533)
 position = Vector2(365, 84)
 
 [node name="player" parent="." instance=ExtResource("3_tju2k")]
-position = Vector2(337, 1005)
+position = Vector2(341, 991)
 
 [node name="Chain Segments" parent="player" instance=ExtResource("5_rmxe4")]
 position = Vector2(-571, -1185)
 
 [node name="UI" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1067.0
@@ -106,6 +107,20 @@ theme_override_fonts/font = ExtResource("9_xks1a")
 theme_override_font_sizes/font_size = 25
 text = "Connect"
 icon_alignment = 1
+
+[node name="PurpleSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://multiplayer_player.tscn")
+spawn_path = NodePath("../GreenPlayers")
+spawn_limit = 1
+
+[node name="GreenPlayers" type="Area2D" parent="."]
+position = Vector2(338, 983)
+
+[node name="EnemySpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("")
+spawn_path = NodePath("../PurplePlayers")
+
+[node name="PurplePlayers" type="Area2D" parent="."]
 
 [connection signal="pressed" from="UI/Net/Options/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="UI/Net/Options/Connect" to="." method="_on_connect_pressed"]

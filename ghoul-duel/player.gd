@@ -14,10 +14,7 @@ var segment_follow_distance = 5    # Each segment follows a position further bac
 var timer = 0
 
 # Set by the authority, synchronized on spawn.
-@export var player := 1 :
-	set(id):
-		player = id
-		
+
 		# Give authority over the player input to the appropriate peer.
 		#$PlayerInput.set_multiplayer_authority(id)
 # Player synchronized input
