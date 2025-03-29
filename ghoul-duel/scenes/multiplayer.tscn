@@ -1,32 +1,32 @@
 [gd_scene load_steps=10 format=3 uid="uid://dr1n33108k7i4"]
 
-[ext_resource type="Script" path="res://multiplayer.gd" id="1_ufk85"]
-[ext_resource type="PackedScene" uid="uid://dp834itcokuy6" path="res://hud.tscn" id="2_cnxph"]
-[ext_resource type="PackedScene" uid="uid://csh2obhqb1oaj" path="res://map.tscn" id="2_j8t54"]
-[ext_resource type="PackedScene" uid="uid://byxcdoun7v1rx" path="res://player.tscn" id="3_tju2k"]
-[ext_resource type="PackedScene" uid="uid://c0dtraeqsme31" path="res://chain_segments.tscn" id="5_rmxe4"]
-[ext_resource type="PackedScene" uid="uid://b8ivvlq2l441t" path="res://enemy.tscn" id="5_txex2"]
-[ext_resource type="Texture2D" uid="uid://b241u0e3u2nea" path="res://assets/lobby + results/lobby two.png" id="6_87t0v"]
-[ext_resource type="FontFile" uid="uid://gdn1qrce6ar" path="res://assets/font/architect-s-daughter/ArchitectsDaughter.ttf" id="8_rbg61"]
-[ext_resource type="FontFile" path="res://assets/font/architect-s-daughter/ArchitectsDaughter32.tres" id="9_xks1a"]
+[ext_resource type="Script" path="res://scripts/multiplayer.gd" id="1_ryfeo"]
+[ext_resource type="PackedScene" uid="uid://dp834itcokuy6" path="res://scenes/hud.tscn" id="2_quvfb"]
+[ext_resource type="PackedScene" uid="uid://csh2obhqb1oaj" path="res://scenes/map.tscn" id="3_s01dl"]
+[ext_resource type="PackedScene" uid="uid://b8ivvlq2l441t" path="res://scenes/enemy.tscn" id="4_k5csj"]
+[ext_resource type="PackedScene" uid="uid://byxcdoun7v1rx" path="res://scenes/player.tscn" id="5_vd56j"]
+[ext_resource type="PackedScene" uid="uid://c0dtraeqsme31" path="res://scenes/chain_segments.tscn" id="6_twe4e"]
+[ext_resource type="Texture2D" uid="uid://b241u0e3u2nea" path="res://assets/lobby + results/lobby two.png" id="7_5xds3"]
+[ext_resource type="FontFile" uid="uid://gdn1qrce6ar" path="res://assets/font/architect-s-daughter/ArchitectsDaughter.ttf" id="8_il4ha"]
+[ext_resource type="FontFile" path="res://assets/font/architect-s-daughter/ArchitectsDaughter32.tres" id="9_juib0"]
 
 [node name="Multiplayer" type="Node"]
-script = ExtResource("1_ufk85")
+script = ExtResource("1_ryfeo")
 
-[node name="HUD" parent="." instance=ExtResource("2_cnxph")]
+[node name="HUD" parent="." instance=ExtResource("2_quvfb")]
 
-[node name="map" parent="." instance=ExtResource("2_j8t54")]
+[node name="map" parent="." instance=ExtResource("3_s01dl")]
 
 [node name="Camera2D" type="Camera2D" parent="map"]
 position = Vector2(531, 533)
 
-[node name="enemy" parent="." groups=["Player"] instance=ExtResource("5_txex2")]
+[node name="enemy" parent="." groups=["Player"] instance=ExtResource("4_k5csj")]
 position = Vector2(365, 84)
 
-[node name="player" parent="." instance=ExtResource("3_tju2k")]
+[node name="player" parent="." instance=ExtResource("5_vd56j")]
 position = Vector2(341, 991)
 
-[node name="Chain Segments" parent="player" instance=ExtResource("5_rmxe4")]
+[node name="Chain Segments" parent="player" instance=ExtResource("6_twe4e")]
 position = Vector2(-571, -1185)
 
 [node name="UI" type="Control" parent="."]
@@ -50,7 +50,7 @@ offset_left = -3.0
 offset_top = 234.0
 offset_right = 1057.0
 offset_bottom = 831.0
-texture = ExtResource("6_87t0v")
+texture = ExtResource("7_5xds3")
 
 [node name="Net" type="Panel" parent="UI"]
 layout_mode = 1
@@ -85,7 +85,7 @@ theme_override_colors/icon_pressed_color = Color(0.388235, 0.105882, 0.568627, 1
 theme_override_colors/icon_hover_color = Color(0.388235, 0.105882, 0.568627, 1)
 theme_override_colors/icon_hover_pressed_color = Color(0.388235, 0.105882, 0.568627, 1)
 theme_override_colors/icon_disabled_color = Color(0.388235, 0.105882, 0.568627, 1)
-theme_override_fonts/font = ExtResource("8_rbg61")
+theme_override_fonts/font = ExtResource("8_il4ha")
 theme_override_font_sizes/font_size = 20
 text = "Host"
 
@@ -103,24 +103,10 @@ theme_override_colors/icon_pressed_color = Color(0.0627451, 0.513726, 0.309804, 
 theme_override_colors/icon_hover_color = Color(0.0627451, 0.513726, 0.309804, 1)
 theme_override_colors/icon_hover_pressed_color = Color(0.0627451, 0.513726, 0.309804, 1)
 theme_override_colors/icon_disabled_color = Color(0.0627451, 0.513726, 0.309804, 1)
-theme_override_fonts/font = ExtResource("9_xks1a")
+theme_override_fonts/font = ExtResource("9_juib0")
 theme_override_font_sizes/font_size = 25
 text = "Connect"
 icon_alignment = 1
-
-[node name="PurpleSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://multiplayer_player.tscn")
-spawn_path = NodePath("../GreenPlayers")
-spawn_limit = 1
-
-[node name="GreenPlayers" type="Area2D" parent="."]
-position = Vector2(338, 983)
-
-[node name="EnemySpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("")
-spawn_path = NodePath("../PurplePlayers")
-
-[node name="PurplePlayers" type="Area2D" parent="."]
 
 [connection signal="pressed" from="UI/Net/Options/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="UI/Net/Options/Connect" to="." method="_on_connect_pressed"]

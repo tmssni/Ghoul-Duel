@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://dp834itcokuy6"]
 
 [ext_resource type="FontFile" uid="uid://bklqh6kfdc8v0" path="res://assets/font/kirifont/KiriFont.otf" id="1_0n6m8"]
-[ext_resource type="Script" path="res://green_score.gd" id="2_77agx"]
-[ext_resource type="Theme" uid="uid://dvqtidflm4ya6" path="res://theme.tres" id="2_f538a"]
-[ext_resource type="Script" path="res://purple_score.gd" id="3_rsudx"]
-[ext_resource type="Script" path="res://progress_bar.gd" id="4_j30gk"]
+[ext_resource type="Script" path="res://scripts/green_score.gd" id="2_77agx"]
+[ext_resource type="Theme" uid="uid://dvqtidflm4ya6" path="res://assets/themes/theme.tres" id="2_f538a"]
+[ext_resource type="Script" path="res://scripts/purple_score.gd" id="3_rsudx"]
+[ext_resource type="Script" path="res://scripts/progress_bar.gd" id="4_j30gk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ndr0d"]
 

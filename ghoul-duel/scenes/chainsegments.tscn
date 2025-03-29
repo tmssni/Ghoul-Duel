@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c5wxbxavhpnib"]
 
 [ext_resource type="Texture2D" uid="uid://c400s28wt816k" path="res://assets/flames/purple flame.png" id="1_0cdod"]
-[ext_resource type="Script" path="res://chainsegments.gd" id="2_c2j6g"]
+[ext_resource type="Script" path="res://scripts/chainsegments.gd" id="2_c2j6g"]
 
 [node name="chainsegments" type="Sprite2D"]
 z_index = 1

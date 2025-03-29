@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://xmrd1un3s7vg"]
 
-[ext_resource type="Script" path="res://coins.gd" id="1_h7wov"]
+[ext_resource type="Script" path="res://scripts/coins.gd" id="1_h7wov"]
 [ext_resource type="Texture2D" uid="uid://b3xx2qa65sk2" path="res://assets/flames/blue flame.png" id="2_ab08o"]
 
 [node name="Coins" type="Sprite2D"]
