@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://bgvlqqt6usasq"]
+
+[ext_resource type="Texture2D" uid="uid://dxvn7lft28ugk" path="res://assets/green team/idle down.png" id="2_b858j"]
+[ext_resource type="Texture2D" uid="uid://cpwmttn00lxsw" path="res://assets/green team/idle up.png" id="3_v87ru"]
+[ext_resource type="Texture2D" uid="uid://dpypwrr2oho54" path="res://assets/green team/moving green.png" id="4_dxfs7"]
+
+[sub_resource type="GDScript" id="GDScript_f7gwx"]
+script/source = "extends CharacterBody2D
+#multiplayer_player 
+
+const SPEED = 300.0
+const JUMP_VELOCITY = -400.0
+
+@export var player_id := 1 :
+	set(id):
+		player_id = id
+
+
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+	# Handle jump.
+	if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var direction := Input.get_axis(\"ui_left\", \"ui_right\")
+	if direction:
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+
+	move_and_slide()
+"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_stc2o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b858j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_v87ru")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b858j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dxfs7")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jqeor"]
+radius = 15.0
+height = 38.0
+
+[node name="MultiplayerPlayer" type="CharacterBody2D"]
+script = SubResource("GDScript_f7gwx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.00002, 1.99998)
+scale = Vector2(0.269231, 0.273973)
+sprite_frames = SubResource("SpriteFrames_stc2o")
+animation = &"idle"
+speed_scale = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.80771, 1.72601)
+scale = Vector2(0.269231, 0.273973)
+shape = SubResource("CapsuleShape2D_jqeor")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-216, -149)
+zoom = Vector2(3.055, 3.055)

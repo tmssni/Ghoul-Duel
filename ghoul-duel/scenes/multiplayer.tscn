@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dr1n33108k7i4"]
+[gd_scene load_steps=9 format=3 uid="uid://dr1n33108k7i4"]
 
 [ext_resource type="Script" path="res://scripts/multiplayer.gd" id="1_ryfeo"]
 [ext_resource type="PackedScene" uid="uid://dp834itcokuy6" path="res://scenes/hud.tscn" id="2_quvfb"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://c0dtraeqsme31" path="res://scenes/chain_segments.tscn" id="6_twe4e"]
 [ext_resource type="Texture2D" uid="uid://b241u0e3u2nea" path="res://assets/lobby + results/lobby two.png" id="7_5xds3"]
 [ext_resource type="FontFile" uid="uid://gdn1qrce6ar" path="res://assets/font/architect-s-daughter/ArchitectsDaughter.ttf" id="8_il4ha"]
-[ext_resource type="FontFile" path="res://assets/font/architect-s-daughter/ArchitectsDaughter32.tres" id="9_juib0"]
 
 [node name="Multiplayer" type="Node"]
 script = ExtResource("1_ryfeo")
@@ -30,7 +29,6 @@ position = Vector2(341, 991)
 position = Vector2(-571, -1185)
 
 [node name="UI" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1067.0
@@ -47,9 +45,9 @@ color = Color(0, 0, 0, 1)
 [node name="TextureRect" type="TextureRect" parent="UI"]
 layout_mode = 2
 offset_left = -3.0
-offset_top = 234.0
-offset_right = 1057.0
-offset_bottom = 831.0
+offset_top = 247.0
+offset_right = 1058.0
+offset_bottom = 854.0
 texture = ExtResource("7_5xds3")
 
 [node name="Net" type="Panel" parent="UI"]
@@ -66,8 +64,8 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 50.0
 offset_top = 56.0
-offset_right = 899.0
-offset_bottom = 184.0
+offset_right = 910.0
+offset_bottom = 182.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -87,9 +85,9 @@ theme_override_colors/icon_hover_pressed_color = Color(0.388235, 0.105882, 0.568
 theme_override_colors/icon_disabled_color = Color(0.388235, 0.105882, 0.568627, 1)
 theme_override_fonts/font = ExtResource("8_il4ha")
 theme_override_font_sizes/font_size = 20
-text = "Host"
+text = "Host Game"
 
-[node name="Connect" type="Button" parent="UI/Net/Options"]
+[node name="Join" type="Button" parent="UI/Net/Options"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_colors/font_disabled_color = Color(0.0627451, 0.513726, 0.309804, 1)
@@ -103,10 +101,18 @@ theme_override_colors/icon_pressed_color = Color(0.0627451, 0.513726, 0.309804, 
 theme_override_colors/icon_hover_color = Color(0.0627451, 0.513726, 0.309804, 1)
 theme_override_colors/icon_hover_pressed_color = Color(0.0627451, 0.513726, 0.309804, 1)
 theme_override_colors/icon_disabled_color = Color(0.0627451, 0.513726, 0.309804, 1)
-theme_override_fonts/font = ExtResource("9_juib0")
-theme_override_font_sizes/font_size = 25
-text = "Connect"
+theme_override_fonts/font = ExtResource("8_il4ha")
+theme_override_font_sizes/font_size = 20
+text = "Join Game"
 icon_alignment = 1
 
+[node name="Start game" type="Button" parent="UI/Net/Options"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("8_il4ha")
+theme_override_font_sizes/font_size = 20
+text = "Start Game"
+
 [connection signal="pressed" from="UI/Net/Options/Host" to="." method="_on_host_pressed"]
-[connection signal="pressed" from="UI/Net/Options/Connect" to="." method="_on_connect_pressed"]
+[connection signal="pressed" from="UI/Net/Options/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="UI/Net/Options/Start game" to="." method="_on_start__pressed"]

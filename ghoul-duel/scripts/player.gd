@@ -3,7 +3,7 @@ class_name Player extends CharacterBody2D
 @export var speed = 400
 @export var flames_stolen := 0
 
-@export var chain_scene: PackedScene = preload("res://chain_segments.tscn")  # Drag & drop ChainSegment.tscn into this in the editor
+@export var chain_scene: PackedScene = preload("res://scenes/chain_segments.tscn")  # Drag & drop ChainSegment.tscn into this in the editor
 @export var chain_segments = []  # Stores all chain segments
 var previous_positions = []  # Stores past positions of the player
 var max_positions = 10  # How many positions to store (adjust as needed)
@@ -13,13 +13,6 @@ var position_history_frequency = 1  # Save history every frame
 var segment_follow_distance = 5    # Each segment follows a position further back in history
 var timer = 0
 
-# Set by the authority, synchronized on spawn.
-
-		# Give authority over the player input to the appropriate peer.
-		#$PlayerInput.set_multiplayer_authority(id)
-# Player synchronized input
-
-#@onready var input = $PlayerInput
 
 func _ready():
 	add_to_group("player")

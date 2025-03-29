@@ -18,8 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 global="*res://scripts/global.gd"
-MultiplayerManager="*res://multiplayer/multiplayer_manager.gd"
-GameManager="*res://game_manager.gd"
 
 [display]
 

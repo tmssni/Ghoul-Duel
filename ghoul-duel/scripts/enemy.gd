@@ -3,7 +3,7 @@ var screen_size
 @export var speed = 400
 @export var flames_stolen := 0
 
-@export var gchain_scene: PackedScene = preload("res://chainsegments.tscn")  # Drag & drop ChainSegment.tscn into this in the editor
+@export var gchain_scene: PackedScene = preload("res://scenes/chainsegments.tscn")  # Drag & drop ChainSegment.tscn into this in the editor
 @export var chainsegments = []  # Stores all chain segments
 var previous_positions = []  # Stores past positions of the player
 var max_positions = 10  # How many positions to store (adjust as needed)
