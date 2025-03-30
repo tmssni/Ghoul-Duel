@@ -15,7 +15,8 @@ var timer = 0
 
 
 func _ready():
-	add_to_group("player")
+	#add_to_group("player")
+	pass
 
 func _physics_process(_delta):
 		var input_velocity = Vector2.ZERO  # Reset velocity each frame

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://byxcdoun7v1rx"]
+[gd_scene load_steps=9 format=3 uid="uid://byxcdoun7v1rx"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_8kqqp"]
 [ext_resource type="Texture2D" uid="uid://dxvn7lft28ugk" path="res://assets/green team/idle down.png" id="2_kuu8g"]
 [ext_resource type="Texture2D" uid="uid://cpwmttn00lxsw" path="res://assets/green team/idle up.png" id="3_8jmqo"]
 [ext_resource type="Texture2D" uid="uid://dpypwrr2oho54" path="res://assets/green team/moving green.png" id="4_cuoxl"]
+[ext_resource type="PackedScene" uid="uid://c0dtraeqsme31" path="res://scenes/chain_segments.tscn" id="5_hutvr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0wf4n"]
 animations = [{
@@ -36,7 +37,7 @@ height = 38.0
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_23hfv"]
 
-[node name="player" type="CharacterBody2D" groups=["Player"]]
+[node name="player" type="CharacterBody2D"]
 position = Vector2(236, 228)
 script = ExtResource("1_8kqqp")
 
@@ -57,3 +58,5 @@ replication_config = SubResource("SceneReplicationConfig_23hfv")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-216, -149)
 zoom = Vector2(3.055, 3.055)
+
+[node name="Chain Segments" parent="." instance=ExtResource("5_hutvr")]

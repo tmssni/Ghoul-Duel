@@ -21,12 +21,35 @@ func player_connected(id):
 func player_disconnected(id):
 	print("player %s disconnected" % id)
 
+#used to send any customer name or icon to server
 func connected_to_server():
 	print("connected to server")
-# Called when the node enters the scene tree for the first time.
+	send_player_info.rpc_id(1, "", multiplayer.get_unique_id())
 
 func connection_failed():
 	print("connection failed")
+
+@rpc("any_peer")
+func send_player_info(name, id):
+	#print(name)
+	if name == "green":
+		if !global.GreenPlayers.has(id):
+			global.GreenPlayers[id] ={
+				"name" : name,
+				"id" : id,
+			}
+		if multiplayer.is_server():
+			for i in global.GreenPlayers:
+				send_player_info.rpc(global.GreenPlayers[i].name, i)
+	if name == "purple":
+		if !global.PurplePlayers.has(id):
+			global.PurplePlayers[id] ={
+				"name" : name,
+				"id" : id,
+			}
+		if multiplayer.is_server():
+			for i in global.PurplePlayers:
+				send_player_info.rpc(global.PurplePlayers[i].name, i)
 
 @rpc("any_peer", "call_local")
 func start_game():
@@ -45,7 +68,7 @@ func _on_host_pressed():
 	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	
 	multiplayer.set_multiplayer_peer(peer)
-	print("host: waiting for players!")
+	send_player_info("green", multiplayer.get_unique_id())
 	
 func _on_join_pressed():
 	peer = ENetMultiplayerPeer.new()
@@ -53,8 +76,8 @@ func _on_join_pressed():
 	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	
 	multiplayer.set_multiplayer_peer(peer)
+	send_player_info("purple", multiplayer.get_unique_id())
 	
-	print("join: waiting to join")
 
 func _on_start_pressed():
 	start_game.rpc()
