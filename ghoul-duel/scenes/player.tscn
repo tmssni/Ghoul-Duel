@@ -36,6 +36,9 @@ radius = 15.0
 height = 38.0
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_23hfv"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
 
 [node name="player" type="CharacterBody2D"]
 position = Vector2(236, 228)
