@@ -7,11 +7,11 @@ func _ready() -> void:
 	var index = 0 
 	for i in global.Players:
 		var currentPlayer = PlayerScene.instantiate()
-		PlayerScene.instantiate()
 		add_child(currentPlayer)
 		for spawn in get_tree().get_nodes_in_group("SpawnPoint"):
-			if spawn.name == str(1):
+			if spawn.name == str(index):
 				currentPlayer.global_position = spawn.global_position
+		index += 1
 	pass # Replace with function body.
 
 
