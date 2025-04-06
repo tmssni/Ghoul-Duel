@@ -14,10 +14,10 @@ func _ready():
 	
 func _process(delta):
 	pass
-
+#gets called on server and client
 func player_connected(id):
 	print("player %s connected" % id)
-	
+#gets called on server and client	
 func player_disconnected(id):
 	print("player %s disconnected" % id)
 
@@ -26,9 +26,11 @@ func connected_to_server():
 	print("connected to server")
 	send_player_info.rpc_id(1, "", multiplayer.get_unique_id())
 
+#called only from clients
 func connection_failed():
 	print("connection failed")
 
+#to pass information
 @rpc("any_peer")
 func send_player_info(name, id):
 	print(name)
@@ -45,7 +47,6 @@ func send_player_info(name, id):
 @rpc("any_peer", "call_local")
 func start_game():
 	var scene = load("res://scenes/multiplayer.tscn").instantiate()
-	
 	get_tree().root.add_child(scene)
 	self.hide()
 
@@ -58,7 +59,6 @@ func _on_host_pressed():
 	
 	#omptimization
 	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
-	
 	multiplayer.set_multiplayer_peer(peer)
 	send_player_info("hoster", multiplayer.get_unique_id())
 	
@@ -66,7 +66,7 @@ func _on_join_pressed():
 	peer = ENetMultiplayerPeer.new()
 	peer.create_client(ip, port)
 	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
-	#send_player_info("joiner", multiplayer.get_unique_id())
+	multiplayer.set_multiplayer_peer(peer)
 
 func _on_start_pressed():
 	start_game.rpc()
