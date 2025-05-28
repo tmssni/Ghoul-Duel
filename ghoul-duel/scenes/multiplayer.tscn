@@ -1,13 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dr1n33108k7i4"]
+[gd_scene load_steps=4 format=3 uid="uid://dr1n33108k7i4"]
 
 [ext_resource type="Script" path="res://scripts/SceneManager.gd" id="1_tbfqq"]
 [ext_resource type="PackedScene" uid="uid://dp834itcokuy6" path="res://scenes/hud.tscn" id="2_quvfb"]
 [ext_resource type="PackedScene" uid="uid://csh2obhqb1oaj" path="res://scenes/map.tscn" id="3_s01dl"]
-[ext_resource type="PackedScene" uid="uid://byxcdoun7v1rx" path="res://scenes/player.tscn" id="5_vd56j"]
 
 [node name="Multiplayer" type="Node"]
 script = ExtResource("1_tbfqq")
-PlayerScene = ExtResource("5_vd56j")
 
 [node name="HUD" parent="." instance=ExtResource("2_quvfb")]
 
@@ -17,10 +15,11 @@ PlayerScene = ExtResource("5_vd56j")
 position = Vector2(531, 533)
 
 [node name="spawn locations" type="Node2D" parent="."]
-position = Vector2(304, 974)
+position = Vector2(343, 962)
 
 [node name="0" type="Node2D" parent="spawn locations" groups=["SpawnPoint"]]
+position = Vector2(24, -878)
 
 [node name="1" type="Node2D" parent="spawn locations" groups=["SpawnPoint"]]
-position = Vector2(82, -1)
+position = Vector2(5, 49)
 scale = Vector2(0.27, 0.27)

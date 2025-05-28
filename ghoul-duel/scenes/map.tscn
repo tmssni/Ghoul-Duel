@@ -16,12 +16,12 @@ offset_bottom = 1062.0
 color = Color(0, 0, 0, 1)
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(521, 531)
+position = Vector2(528, 531)
 scale = Vector2(0.501419, 0.500472)
 texture = ExtResource("2_c2c7r")
 
 [node name="static_body_2d" parent="." instance=ExtResource("2_51l00")]
-position = Vector2(-12, 0)
+position = Vector2(-5, 0)
 
 [node name="HomeBases" type="Node" parent="."]
 
