@@ -44,19 +44,17 @@ func _process(delta):
 		$AnimatedSprite2D.flip_v = false
 		#$Trail.rotation = 0
 		$AnimatedSprite2D.flip_h = velocity.x < 0
-		# Store player's position history every frame
-	timer += 5
+		
+	# Store player's position history with proper timer control
+	timer += 1
 	if timer >= position_history_frequency:
 		timer = 0
 		previous_positions.insert(0, global_position)
-	
-	move_and_slide()
-	# Store player's position history
-	previous_positions.insert(0, global_position)
-	if previous_positions.size() > max_positions * chainsegments.size():
-		previous_positions.pop_back()  
-		
-		# Update each chain segment to follow the player with snake-like effect
+		# Limit the size of position history based on chain segments
+		if previous_positions.size() > max_positions * chainsegments.size() + max_positions:
+			previous_positions.pop_back()  
+			
+	# Update each chain segment to follow the player with snake-like effect
 	for i in range(chainsegments.size()):
 		var target_index = i * segment_follow_distance
 		var index = (i + 1) * max_positions

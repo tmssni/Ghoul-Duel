@@ -18,4 +18,3 @@ position = Vector2(0.189186, 0.214615)
 polygon = PackedVector2Array(-18.8243, -41.2698, -20.7162, -39.1237, -21.0946, -37.4068, -20.527, -36.1192, -19.5811, -35.6899, -18.2568, -35.9045, -17.3108, -37.1922, -17.3108, -38.6945, -17.8784, -40.4114)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

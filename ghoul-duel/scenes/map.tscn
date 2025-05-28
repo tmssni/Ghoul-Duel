@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://csh2obhqb1oaj"]
+[gd_scene load_steps=9 format=3 uid="uid://csh2obhqb1oaj"]
 
 [ext_resource type="PackedScene" uid="uid://dh2c6o45ypcvy" path="res://scenes/static_body_2d.tscn" id="2_51l00"]
 [ext_resource type="Texture2D" uid="uid://ycfjqh1vx6da" path="res://assets/maps/pixelcut-export.png" id="2_c2c7r"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cy2ca0v1jiwfh" path="res://scenes/green.tscn" id="5_rlcve"]
 [ext_resource type="Script" path="res://scripts/purple.gd" id="6_eipue"]
 [ext_resource type="Script" path="res://scenes/coin_container.gd" id="6_k6syx"]
+[ext_resource type="PackedScene" uid="uid://dp834itcokuy6" path="res://scenes/hud.tscn" id="8_hud"]
 
 [node name="map" type="Node"]
 
@@ -31,6 +32,8 @@ position = Vector2(348, 979)
 
 [node name="Purple" parent="HomeBases" instance=ExtResource("5_dit85")]
 script = ExtResource("6_eipue")
+
+[node name="HUD" parent="." instance=ExtResource("8_hud")]
 
 [node name="Coin Container" type="Node" parent="."]
 script = ExtResource("6_k6syx")
@@ -421,6 +424,7 @@ position = Vector2(123, 564)
 
 [node name="CoinRespawnTimer" type="Timer" parent="Coin Container"]
 wait_time = 45.0
+autostart = true
 
 [connection signal="body_entered" from="HomeBases/Purple" to="HomeBases/Purple" method="_on_body_entered"]
 [connection signal="timeout" from="Coin Container/CoinRespawnTimer" to="Coin Container" method="_on_coin_respawn_timer_timeout"]

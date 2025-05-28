@@ -15,7 +15,7 @@ var timer = 0
 
 
 func _ready():
-	#add_to_group("player")
+	add_to_group("player")
 	pass
 
 func _physics_process(_delta):
@@ -47,19 +47,16 @@ func _physics_process(_delta):
 		elif velocity.y != 0:
 			$AnimatedSprite2D.animation = "move"
 		
-		# Store player's position history every frame
-		timer += 2
+		# Store player's position history with proper timer control
+		timer += 1
 		if timer >= position_history_frequency:
 			timer = 0
 			previous_positions.insert(0, global_position)
-		
-		move_and_slide()
-		# Store player's position history
-		previous_positions.insert(0, global_position)
-		if previous_positions.size() > max_positions * chain_segments.size():
-			previous_positions.pop_back()  
+			# Limit the size of position history based on chain segments
+			if previous_positions.size() > max_positions * chain_segments.size() + max_positions:
+				previous_positions.pop_back()  
 			
-			# Update each chain segment to follow the player with snake-like effect
+		# Update each chain segment to follow the player with snake-like effect
 		for i in range(chain_segments.size()):
 			var target_index = i * segment_follow_distance
 			var index = (i + 1) * max_positions
@@ -68,9 +65,13 @@ func _physics_process(_delta):
 	
 func add_chain_segment():
 	var new_segment = chain_scene.instantiate()
-	get_parent().add_child(new_segment)  # Add to the scene
-	new_segment.global_position = global_position  # Spawn at player location
+	call_deferred("_deferred_add_segment", new_segment)
+
+func _deferred_add_segment(new_segment):
+	get_parent().add_child(new_segment)
+	new_segment.global_position = global_position
 	chain_segments.append(new_segment)
+
 
 func start(pos):
 	position = pos

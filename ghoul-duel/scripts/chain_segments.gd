@@ -2,12 +2,17 @@ extends Sprite2D
 
 # Variable to store the chain segments in this area
 var chain_segments = []
+var collision_active = true  # Flag to prevent multiple collisions
 
 func _ready():
 	pass
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	if not collision_active:
+		return  # Collision already processed
+		
 	if body.name == "enemy":
+		collision_active = false  # Disable collision temporarily
 		print("Enemy hit the chain!")
 
 		# Find the player dynamically
@@ -15,12 +20,14 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 		if player.is_empty():
 			print("ERROR: No player found in the scene!")
+			collision_active = true  # Re-enable collision
 			return
 		
 		player = player[0]  # Get the first player in the group
 
 		if not player.has_method("remove_segment"):  # Check if it's really the correct node
 			print("ERROR: Found node is not the player!")
+			collision_active = true  # Re-enable collision
 			return
 		
 		if player.chain_segments.size() > 0:
@@ -40,3 +47,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 				print("Removed segment successfully.")
 
 			print("Chain segments after removal:", player.chain_segments.size())
+		
+		# Re-enable collision after a short delay
+		call_deferred("_reset_collision")
+
+func _reset_collision():
+	collision_active = true

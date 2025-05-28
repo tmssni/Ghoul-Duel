@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dr1n33108k7i4"]
+
+[ext_resource type="Script" path="res://scripts/SceneManager.gd" id="1_tbfqq"]
+[ext_resource type="PackedScene" uid="uid://dp834itcokuy6" path="res://scenes/hud.tscn" id="2_quvfb"]
+[ext_resource type="PackedScene" uid="uid://csh2obhqb1oaj" path="res://scenes/map.tscn" id="3_s01dl"]
+[ext_resource type="PackedScene" uid="uid://byxcdoun7v1rx" path="res://scenes/player.tscn" id="4_8kovn"]
+[ext_resource type="PackedScene" uid="uid://b8ivvlq2l441t" path="res://scenes/enemy.tscn" id="5_qej3p"]
+
+[node name="Multiplayer" type="Node"]
+script = ExtResource("1_tbfqq")
+
+[node name="HUD" parent="." instance=ExtResource("2_quvfb")]
+
+[node name="map" parent="." instance=ExtResource("3_s01dl")]
+
+[node name="Camera2D" type="Camera2D" parent="map"]
+position = Vector2(531, 533)
+
+[node name="spawn locations" type="Node2D" parent="."]
+position = Vector2(343, 962)
+
+[node name="0" type="Node2D" parent="spawn locations" groups=["SpawnPoint"]]
+position = Vector2(24, -878)
+
+[node name="1" type="Node2D" parent="spawn locations" groups=["SpawnPoint"]]
+position = Vector2(5, 49)
+scale = Vector2(0.27, 0.27)
+
+[node name="player" parent="." instance=ExtResource("4_8kovn")]
+position = Vector2(354, 1015)
+
+[node name="enemy" parent="." instance=ExtResource("5_qej3p")]
+position = Vector2(365, 80)

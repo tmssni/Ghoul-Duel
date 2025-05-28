@@ -1,32 +1,34 @@
-[gd_scene load_steps=8 format=3 uid="uid://dp834itcokuy6"]
+[gd_scene load_steps=9 format=3 uid="uid://dp834itcokuy6"]
 
 [ext_resource type="FontFile" uid="uid://bklqh6kfdc8v0" path="res://assets/font/kirifont/KiriFont.otf" id="1_0n6m8"]
 [ext_resource type="Script" path="res://scripts/green_score.gd" id="2_77agx"]
 [ext_resource type="Theme" uid="uid://dvqtidflm4ya6" path="res://assets/themes/theme.tres" id="2_f538a"]
 [ext_resource type="Script" path="res://scripts/purple_score.gd" id="3_rsudx"]
 [ext_resource type="Script" path="res://scripts/progress_bar.gd" id="4_j30gk"]
+[ext_resource type="Script" path="res://scripts/hud_manager.gd" id="5_hud_mgr"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ndr0d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bodql"]
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" groups=["hud"]]
+script = ExtResource("5_hud_mgr")
 
 [node name="green_score" type="Label" parent="."]
 z_index = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 124.0
-offset_top = 2.0
-offset_right = -866.0
-offset_bottom = -1005.0
+offset_left = 20.0
+offset_top = 10.0
+offset_right = -950.0
+offset_bottom = -950.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 18
+theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("1_0n6m8")
-theme_override_font_sizes/font_size = 109
+theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ndr0d")
 text = "0"
 label_settings = SubResource("LabelSettings_bodql")
@@ -34,21 +36,40 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("2_77agx")
 
+[node name="GreenLabel" type="Label" parent="."]
+z_index = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 60.0
+offset_right = -950.0
+offset_bottom = -990.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.1, 0.8, 0.1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_0n6m8")
+theme_override_font_sizes/font_size = 20
+text = "GREEN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="purple_score" type="Label" parent="."]
 z_index = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 879.0
-offset_top = 1.0
-offset_right = -111.0
-offset_bottom = -1006.0
+offset_left = 950.0
+offset_top = 10.0
+offset_right = -20.0
+offset_bottom = -950.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 18
+theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("1_0n6m8")
-theme_override_font_sizes/font_size = 109
+theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ndr0d")
 text = "0"
 label_settings = SubResource("LabelSettings_bodql")
@@ -56,18 +77,105 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("3_rsudx")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = 182.0
-offset_top = 13.0
-offset_right = 896.0
-offset_bottom = 42.0
+[node name="PurpleLabel" type="Label" parent="."]
+z_index = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 950.0
+offset_top = 60.0
+offset_right = -20.0
+offset_bottom = -990.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.8, 0.1, 0.8, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_0n6m8")
+theme_override_font_sizes/font_size = 20
+text = "PURPLE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="."]
+z_index = -1
+offset_right = 1064.0
+offset_bottom = 90.0
+
+[node name="TimerLabel" type="Label" parent="."]
+z_index = 2
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -85.0
+offset_top = 20.0
+offset_right = 85.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_0n6m8")
+theme_override_font_sizes/font_size = 28
+text = "1:30"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WinnerOverlay" type="Control" parent="."]
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+
+[node name="Background" type="ColorRect" parent="WinnerOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.8)
+
+[node name="WinnerLabel" type="Label" parent="WinnerOverlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = 100.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_0n6m8")
+theme_override_font_sizes/font_size = 72
+text = "GREEN WINS!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="WinnerOverlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 50.0
+offset_right = 100.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 24
+text = "Play Again"
+
+[connection signal="pressed" from="WinnerOverlay/RestartButton" to="." method="_on_restart_pressed"]
+
+[node name="ProgressBar" type="ProgressBar" parent="." groups=["progress_bar"]]
+offset_left = 150.0
+offset_top = 55.0
+offset_right = 910.0
+offset_bottom = 80.0
 theme = ExtResource("2_f538a")
 value = 50.0
 rounded = true
 show_percentage = false
 script = ExtResource("4_j30gk")
-
-[node name="Panel" type="Panel" parent="."]
-z_index = -1
-offset_right = 1064.0
-offset_bottom = 52.0
