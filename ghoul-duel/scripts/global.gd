@@ -31,34 +31,17 @@ func start_game_timer():
 
 func end_game_by_time():
 	game_active = false
-	announce_winner("Time's Up!")
+	# Determine winner based on score
+	if player_score > enemy_score:
+		announce_winner("Green Player Wins!")
+	elif enemy_score > player_score:
+		announce_winner("Purple Player Wins!")
+	else:
+		announce_winner("Tie!")
 
 func check_winner() -> void:
-	if not game_active:
-		return
-		
-	if player_score >= max_score and player_score > enemy_score:
-		if game_winner != "Green":
-			game_winner = "Green"
-			game_active = false
-			announce_winner("Green Player Wins!")
-	elif enemy_score >= max_score and enemy_score > player_score:
-		if game_winner != "Purple":
-			game_winner = "Purple"
-			game_active = false
-			announce_winner("Purple Player Wins!")
-	elif player_score >= max_score and enemy_score >= max_score:
-		# Tie case - whoever has more wins
-		if player_score > enemy_score:
-			if game_winner != "Green":
-				game_winner = "Green"
-				game_active = false
-				announce_winner("Green Player Wins!")
-		elif enemy_score > player_score:
-			if game_winner != "Purple":
-				game_winner = "Purple"
-				game_active = false
-				announce_winner("Purple Player Wins!")
+	# Do nothing - winners are only determined when time runs out
+	pass
 
 func announce_winner(message: String) -> void:
 	print("[GLOBAL] GAME OVER: ", message)

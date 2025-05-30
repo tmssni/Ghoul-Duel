@@ -30,26 +30,13 @@ func _on_winner_announced(winner_name: String):
 
 func show_winner(winner_name: String):
 	if winner_name == "Green":
-		winner_label.text = "GREEN WINS!"
+		winner_label.text = "TIME'S UP!\nGREEN WINS!"
 		winner_label.add_theme_color_override("font_color", Color(0.1, 0.8, 0.1, 1))
 	elif winner_name == "Purple":
-		winner_label.text = "PURPLE WINS!"
+		winner_label.text = "TIME'S UP!\nPURPLE WINS!"
 		winner_label.add_theme_color_override("font_color", Color(0.8, 0.1, 0.8, 1))
-	elif winner_name == "Time":
-		winner_label.text = "TIME'S UP!"
-		winner_label.add_theme_color_override("font_color", Color(1, 1, 0, 1))
-		# Determine winner based on score
-		if global.player_score > global.enemy_score:
-			winner_label.text = "TIME'S UP!\nGREEN WINS!"
-			winner_label.add_theme_color_override("font_color", Color(0.1, 0.8, 0.1, 1))
-		elif global.enemy_score > global.player_score:
-			winner_label.text = "TIME'S UP!\nPURPLE WINS!"
-			winner_label.add_theme_color_override("font_color", Color(0.8, 0.1, 0.8, 1))
-		else:
-			winner_label.text = "TIME'S UP!\nIT'S A TIE!"
-			winner_label.add_theme_color_override("font_color", Color(1, 1, 1, 1))
 	else:
-		winner_label.text = "IT'S A TIE!"
+		winner_label.text = "TIME'S UP!\nIT'S A TIE!"
 		winner_label.add_theme_color_override("font_color", Color(1, 1, 1, 1))
 	
 	winner_overlay.visible = true
