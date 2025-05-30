@@ -16,6 +16,5 @@ func _on_body_entered(body: Node2D) -> void:
 			body.delete_chain()
 			print("Purple scored: ", chain_score, " points! Total: ", global.enemy_score)
 			
-			# Update progress bar and check for winner
-			global.update_progress_bar(global.player_score, global.enemy_score)
+			# Check for winner
 			global.check_winner()

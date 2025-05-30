@@ -6,5 +6,5 @@ size = Vector2(152, 138.5)
 [node name="Purple" type="Area2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(348, 90.75)
+position = Vector2(342, 163)
 shape = SubResource("RectangleShape2D_3qjh2")

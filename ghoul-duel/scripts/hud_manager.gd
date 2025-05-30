@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var winner_label = $WinnerOverlay/WinnerLabel
 @onready var restart_button = $WinnerOverlay/RestartButton
 @onready var timer_label = $TimerLabel
+@onready var score_bar = $ScoreBar
 
 func _ready():
 	add_to_group("hud")
@@ -14,6 +15,15 @@ func _ready():
 	# Make sure the restart button is connected properly
 	if restart_button:
 		restart_button.pressed.connect(_on_restart_pressed)
+
+func _on_update_timer_timeout():
+	if score_bar:
+		var total = global.player_score + global.enemy_score
+		if total > 0:
+			var green_percent = (float(global.player_score) / float(total)) * 100.0
+			score_bar.value = green_percent
+		else:
+			score_bar.value = 50.0
 
 func _on_winner_announced(winner_name: String):
 	show_winner(winner_name)
