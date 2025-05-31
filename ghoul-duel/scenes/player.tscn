@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://byxcdoun7v1rx"]
+[gd_scene load_steps=11 format=3 uid="uid://byxcdoun7v1rx"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_8kqqp"]
 [ext_resource type="Texture2D" uid="uid://dxvn7lft28ugk" path="res://assets/green team/idle down.png" id="2_kuu8g"]
@@ -40,6 +40,17 @@ properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
+[sub_resource type="Gradient" id="Gradient_tde4o"]
+offsets = PackedFloat32Array(0, 0.717822)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_86pi6"]
+gradient = SubResource("Gradient_tde4o")
+width = 200
+height = 200
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="player" type="CharacterBody2D"]
 position = Vector2(236, 228)
 script = ExtResource("1_8kqqp")
@@ -59,7 +70,17 @@ shape = SubResource("CapsuleShape2D_jk6qr")
 replication_config = SubResource("SceneReplicationConfig_23hfv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-216, -149)
-zoom = Vector2(3.055, 3.055)
+position = Vector2(-2, 0)
+zoom = Vector2(2.5, 2.5)
+limit_left = 0
+limit_top = 0
+limit_right = 1065
+limit_bottom = 1065
 
 [node name="Chain Segments" parent="." instance=ExtResource("5_hutvr")]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-3, 0)
+color = Color(0.1, 0.8, 0.1, 1)
+energy = 1.5
+texture = SubResource("GradientTexture2D_86pi6")

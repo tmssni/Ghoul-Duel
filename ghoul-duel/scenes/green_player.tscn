@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgvlqqt6usasq"]
+[gd_scene load_steps=7 format=3 uid="uid://cqvi57ljgaluo"]
 
 [ext_resource type="Texture2D" uid="uid://dxvn7lft28ugk" path="res://assets/green team/idle down.png" id="1_2ebnk"]
 [ext_resource type="Texture2D" uid="uid://cpwmttn00lxsw" path="res://assets/green team/idle up.png" id="2_poiyj"]
