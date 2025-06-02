@@ -2,6 +2,7 @@ extends Node
 
 signal winner_announced(winner_name: String)
 signal timer_updated(time_left: float)
+signal restart_requested
 
 var player_score = 0
 var enemy_score = 0
@@ -54,11 +55,3 @@ func announce_winner(message: String) -> void:
 		winner_name = "Time"
 	
 	winner_announced.emit(winner_name)
-
-func reset_game() -> void:
-	print("[GLOBAL] Resetting game state...")
-	player_score = 0
-	enemy_score = 0
-	game_winner = ""
-	game_timer = 90.0
-	game_active = true

@@ -14,6 +14,7 @@ func _ready():
 	multiplayer.peer_disconnected.connect(player_disconnected)
 	multiplayer.connected_to_server.connect(connected_to_server)
 	multiplayer.connection_failed.connect(connection_failed)
+	global.restart_requested.connect(restart_game)
 
 # Spawns a character (player or enemy) at a named spawn point
 func spawn_character(scene_path: String, name: String, id: int, spawn_point_name: String):
@@ -118,3 +119,6 @@ func _on_join_pressed():
 func _on_start_pressed():
 	print("[UI] Start button pressed.")
 	start_game.rpc()
+
+func restart_game():
+	get_tree().reload_current_scene()

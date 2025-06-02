@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var restart_button = $WinnerOverlay/RestartButton
 @onready var timer_label = $TimerLabel
 @onready var score_bar = $ScoreBar
+@onready var winner_background = $WinnerOverlay/Background
 
 func _ready():
 	add_to_group("hud")
@@ -12,9 +13,8 @@ func _ready():
 	global.winner_announced.connect(_on_winner_announced)
 	# Connect to timer updates
 	global.timer_updated.connect(_on_timer_updated)
-	# Make sure the restart button is connected properly
-	if restart_button:
-		restart_button.pressed.connect(_on_restart_pressed)
+	# Debug print to check if button exists
+	print("Restart button node: ", restart_button)
 
 func _on_update_timer_timeout():
 	if score_bar:
@@ -32,57 +32,25 @@ func show_winner(winner_name: String):
 	if winner_name == "Green":
 		winner_label.text = "TIME'S UP!\nGREEN WINS!"
 		winner_label.add_theme_color_override("font_color", Color(0.1, 0.8, 0.1, 1))
+		winner_background.texture = load("res://assets/lobby + results/results green.png")
 	elif winner_name == "Purple":
 		winner_label.text = "TIME'S UP!\nPURPLE WINS!"
 		winner_label.add_theme_color_override("font_color", Color(0.8, 0.1, 0.8, 1))
+		winner_background.texture = load("res://assets/lobby + results/results purple.png")
 	else:
 		winner_label.text = "TIME'S UP!\nIT'S A TIE!"
 		winner_label.add_theme_color_override("font_color", Color(1, 1, 1, 1))
+		winner_background.visible = false # Or set a default tie image
 	
 	winner_overlay.visible = true
 	# Pause the game
 	get_tree().paused = true
 
-func _on_restart_pressed():
-	print("Restart button pressed!")  # Debug
-	# Hide winner overlay
-	winner_overlay.visible = false
-	# Resume the game
-	get_tree().paused = false
-	# Reset the game state
-	global.reset_game()
-	
-	# Reset timer display
-	timer_label.add_theme_color_override("font_color", Color(1, 1, 1, 1))
-	timer_label.text = "1:30"
-	
-	# Reset all coins
-	var coins = get_tree().get_nodes_in_group("coins")
-	for coin in coins:
-		if coin.has_method("reset_coin"):
-			coin.reset_coin()
-	
-	# Reset player positions and chains
-	var players = get_tree().get_nodes_in_group("player")
-	var enemies = get_tree().get_nodes_in_group("enemy")
-	
-	for player in players:
-		if player.has_method("delete_chain"):
-			player.delete_chain()
-		# Reset player position to spawn point
-		player.global_position = Vector2(348, 900)  # Adjust as needed
-	
-	for enemy in enemies:
-		if enemy.has_method("delete_chain"):
-			enemy.delete_chain()
-		# Reset enemy position to spawn point  
-		enemy.global_position = Vector2(348, 150)  # Adjust as needed 
-
 func _on_timer_updated(time_left: float):
 	var minutes = int(time_left / 60)
 	var seconds = int(time_left) % 60
 	# Ensure timer format has consistent width to prevent overlap
-	timer_label.text = "%01d:%02d" % [minutes, seconds]
+	timer_label.text = "%01d : %02d" % [minutes, seconds]
 	
 	# Change color when time is running low
 	if time_left <= 10:

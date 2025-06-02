@@ -18,17 +18,17 @@ script = ExtResource("1_tbfqq")
 position = Vector2(343, 962)
 
 [node name="0" type="Node2D" parent="spawn locations" groups=["SpawnPoint"]]
-position = Vector2(14, -784)
+position = Vector2(16, -841)
 
 [node name="1" type="Node2D" parent="spawn locations" groups=["SpawnPoint"]]
 position = Vector2(26, 43)
 scale = Vector2(0.27, 0.27)
 
 [node name="player" parent="." instance=ExtResource("4_8kovn")]
-position = Vector2(370, 1005)
+position = Vector2(368, 1003)
 
 [node name="enemy" parent="." instance=ExtResource("5_qej3p")]
-position = Vector2(358, 174)
+position = Vector2(358, 119)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_aupf2")
