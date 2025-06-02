@@ -50,7 +50,7 @@ func _on_timer_updated(time_left: float):
 	var minutes = int(time_left / 60)
 	var seconds = int(time_left) % 60
 	# Ensure timer format has consistent width to prevent overlap
-	timer_label.text = "%01d : %02d" % [minutes, seconds]
+	timer_label.text = "%01d : %01d" % [minutes, seconds]
 	
 	# Change color when time is running low
 	if time_left <= 10:
